@@ -1,0 +1,1325 @@
+[
+  {
+    "Id": "1",
+    "ReceiptDate": "00:00.0",
+    "Date": "54:06.1",
+    "Amount": "400",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER REUBEN"
+  },
+  {
+    "Id": "2",
+    "ReceiptDate": "00:00.0",
+    "Date": "56:03.8",
+    "Amount": "20",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "BANK CHARGES"
+  },
+  {
+    "Id": "3",
+    "ReceiptDate": "00:00.0",
+    "Date": "57:43.9",
+    "Amount": "730",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "MR. PATRICK OPOKU"
+  },
+  {
+    "Id": "4",
+    "ReceiptDate": "00:00.0",
+    "Date": "58:28.9",
+    "Amount": "1510",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "MR. PATRICK OPOKU"
+  },
+  {
+    "Id": "5",
+    "ReceiptDate": "00:00.0",
+    "Date": "59:23.6",
+    "Amount": "1705",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "6",
+    "ReceiptDate": "00:00.0",
+    "Date": "59:54.6",
+    "Amount": "740",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "7",
+    "ReceiptDate": "00:00.0",
+    "Date": "00:15.6",
+    "Amount": "520",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "8",
+    "ReceiptDate": "00:00.0",
+    "Date": "00:33.3",
+    "Amount": "680",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "9",
+    "ReceiptDate": "00:00.0",
+    "Date": "00:59.3",
+    "Amount": "1145",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "10",
+    "ReceiptDate": "00:00.0",
+    "Date": "01:19.9",
+    "Amount": "445",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "11",
+    "ReceiptDate": "00:00.0",
+    "Date": "01:39.3",
+    "Amount": "520",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "12",
+    "ReceiptDate": "00:00.0",
+    "Date": "02:01.4",
+    "Amount": "420",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "13",
+    "ReceiptDate": "00:00.0",
+    "Date": "03:50.6",
+    "Amount": "1860",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ANNIE"
+  },
+  {
+    "Id": "14",
+    "ReceiptDate": "00:00.0",
+    "Date": "04:26.3",
+    "Amount": "400",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "15",
+    "ReceiptDate": "00:00.0",
+    "Date": "05:09.2",
+    "Amount": "1015",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "16",
+    "ReceiptDate": "00:00.0",
+    "Date": "06:52.8",
+    "Amount": "1815",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "17",
+    "ReceiptDate": "00:00.0",
+    "Date": "08:07.6",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER REUBEN"
+  },
+  {
+    "Id": "18",
+    "ReceiptDate": "00:00.0",
+    "Date": "08:39.4",
+    "Amount": "60",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "BANK CHARGES"
+  },
+  {
+    "Id": "19",
+    "ReceiptDate": "00:00.0",
+    "Date": "11:40.4",
+    "Amount": "1120",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "20",
+    "ReceiptDate": "00:00.0",
+    "Date": "11:57.7",
+    "Amount": "1655",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "21",
+    "ReceiptDate": "00:00.0",
+    "Date": "12:12.7",
+    "Amount": "120",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "22",
+    "ReceiptDate": "00:00.0",
+    "Date": "12:34.7",
+    "Amount": "1353",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "23",
+    "ReceiptDate": "00:00.0",
+    "Date": "12:54.1",
+    "Amount": "710",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "24",
+    "ReceiptDate": "00:00.0",
+    "Date": "13:17.8",
+    "Amount": "1325",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "MONICA OPOKU"
+  },
+  {
+    "Id": "25",
+    "ReceiptDate": "00:00.0",
+    "Date": "16:23.8",
+    "Amount": "565",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "26",
+    "ReceiptDate": "00:00.0",
+    "Date": "17:12.1",
+    "Amount": "1475",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "27",
+    "ReceiptDate": "00:00.0",
+    "Date": "17:27.6",
+    "Amount": "2170",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "28",
+    "ReceiptDate": "00:00.0",
+    "Date": "17:49.2",
+    "Amount": "1600",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "29",
+    "ReceiptDate": "00:00.0",
+    "Date": "18:06.8",
+    "Amount": "1150",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "30",
+    "ReceiptDate": "00:00.0",
+    "Date": "18:27.1",
+    "Amount": "745",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "31",
+    "ReceiptDate": "00:00.0",
+    "Date": "18:59.8",
+    "Amount": "1620",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "32",
+    "ReceiptDate": "00:00.0",
+    "Date": "19:22.9",
+    "Amount": "1860",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "33",
+    "ReceiptDate": "00:00.0",
+    "Date": "19:40.5",
+    "Amount": "855",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "34",
+    "ReceiptDate": "00:00.0",
+    "Date": "20:00.3",
+    "Amount": "1700",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "35",
+    "ReceiptDate": "00:00.0",
+    "Date": "20:27.2",
+    "Amount": "600",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "36",
+    "ReceiptDate": "00:00.0",
+    "Date": "20:42.3",
+    "Amount": "1160",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "37",
+    "ReceiptDate": "00:00.0",
+    "Date": "20:54.4",
+    "Amount": "600",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "38",
+    "ReceiptDate": "00:00.0",
+    "Date": "21:05.7",
+    "Amount": "280",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "39",
+    "ReceiptDate": "00:00.0",
+    "Date": "22:19.6",
+    "Amount": "15000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "40",
+    "ReceiptDate": "00:00.0",
+    "Date": "23:05.0",
+    "Amount": "1200",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "41",
+    "ReceiptDate": "00:00.0",
+    "Date": "23:25.8",
+    "Amount": "700",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "42",
+    "ReceiptDate": "00:00.0",
+    "Date": "23:38.1",
+    "Amount": "1160",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "43",
+    "ReceiptDate": "00:00.0",
+    "Date": "23:50.3",
+    "Amount": "1120",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "44",
+    "ReceiptDate": "00:00.0",
+    "Date": "24:02.7",
+    "Amount": "1465",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "45",
+    "ReceiptDate": "00:00.0",
+    "Date": "24:31.9",
+    "Amount": "630",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "46",
+    "ReceiptDate": "00:00.0",
+    "Date": "24:42.4",
+    "Amount": "930",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "47",
+    "ReceiptDate": "00:00.0",
+    "Date": "24:53.1",
+    "Amount": "1280",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "48",
+    "ReceiptDate": "00:00.0",
+    "Date": "25:35.4",
+    "Amount": "1010",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SIS. ROSELYN"
+  },
+  {
+    "Id": "49",
+    "ReceiptDate": "00:00.0",
+    "Date": "26:07.2",
+    "Amount": "940",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SIS ROSELYN"
+  },
+  {
+    "Id": "50",
+    "ReceiptDate": "00:00.0",
+    "Date": "27:09.4",
+    "Amount": "390",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SIS ROSELYN"
+  },
+  {
+    "Id": "51",
+    "ReceiptDate": "00:00.0",
+    "Date": "27:20.8",
+    "Amount": "550",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SIS ROSELYN"
+  },
+  {
+    "Id": "52",
+    "ReceiptDate": "00:00.0",
+    "Date": "27:30.9",
+    "Amount": "350",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SIS ROSELYN"
+  },
+  {
+    "Id": "53",
+    "ReceiptDate": "00:00.0",
+    "Date": "27:43.3",
+    "Amount": "260",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SIS ROSELYN"
+  },
+  {
+    "Id": "54",
+    "ReceiptDate": "00:00.0",
+    "Date": "28:37.9",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "SIS ROSELYN"
+  },
+  {
+    "Id": "55",
+    "ReceiptDate": "00:00.0",
+    "Date": "29:55.6",
+    "Amount": "920",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SELORM/ ROSELYN"
+  },
+  {
+    "Id": "56",
+    "ReceiptDate": "00:00.0",
+    "Date": "30:41.1",
+    "Amount": "540",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "VICTORIA"
+  },
+  {
+    "Id": "57",
+    "ReceiptDate": "00:00.0",
+    "Date": "31:34.2",
+    "Amount": "700",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "58",
+    "ReceiptDate": "00:00.0",
+    "Date": "31:51.3",
+    "Amount": "710",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "60",
+    "ReceiptDate": "00:00.0",
+    "Date": "32:38.6",
+    "Amount": "1225",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "61",
+    "ReceiptDate": "00:00.0",
+    "Date": "32:59.1",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER REUBEN"
+  },
+  {
+    "Id": "62",
+    "ReceiptDate": "00:00.0",
+    "Date": "33:24.5",
+    "Amount": "3525",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "63",
+    "ReceiptDate": "00:00.0",
+    "Date": "34:45.4",
+    "Amount": "320",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "BANK CHARGES"
+  },
+  {
+    "Id": "64",
+    "ReceiptDate": "00:00.0",
+    "Date": "37:04.8",
+    "Amount": "510",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "65",
+    "ReceiptDate": "00:00.0",
+    "Date": "38:04.4",
+    "Amount": "290",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "66",
+    "ReceiptDate": "00:00.0",
+    "Date": "38:16.2",
+    "Amount": "370",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "67",
+    "ReceiptDate": "00:00.0",
+    "Date": "38:36.3",
+    "Amount": "290",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "68",
+    "ReceiptDate": "00:00.0",
+    "Date": "39:26.8",
+    "Amount": "540",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "69",
+    "ReceiptDate": "00:00.0",
+    "Date": "39:37.6",
+    "Amount": "815",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "70",
+    "ReceiptDate": "00:00.0",
+    "Date": "40:07.7",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ROSELYN/ ELIAS"
+  },
+  {
+    "Id": "71",
+    "ReceiptDate": "00:00.0",
+    "Date": "49:36.5",
+    "Amount": "676",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "72",
+    "ReceiptDate": "00:00.0",
+    "Date": "49:58.3",
+    "Amount": "350",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "73",
+    "ReceiptDate": "00:00.0",
+    "Date": "51:45.8",
+    "Amount": "1600",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "74",
+    "ReceiptDate": "00:00.0",
+    "Date": "52:37.6",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER REUBEN"
+  },
+  {
+    "Id": "75",
+    "ReceiptDate": "00:00.0",
+    "Date": "53:08.3",
+    "Amount": "2380",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "76",
+    "ReceiptDate": "00:00.0",
+    "Date": "53:28.2",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER REUBEN"
+  },
+  {
+    "Id": "77",
+    "ReceiptDate": "00:00.0",
+    "Date": "53:53.3",
+    "Amount": "3430",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "78",
+    "ReceiptDate": "00:00.0",
+    "Date": "54:17.8",
+    "Amount": "990",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "79",
+    "ReceiptDate": "00:00.0",
+    "Date": "55:03.5",
+    "Amount": "360",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "BANK CHARGES"
+  },
+  {
+    "Id": "80",
+    "ReceiptDate": "00:00.0",
+    "Date": "00:34.2",
+    "Amount": "100",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "81",
+    "ReceiptDate": "00:00.0",
+    "Date": "01:48.5",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "BAISIE JOS"
+  },
+  {
+    "Id": "82",
+    "ReceiptDate": "00:00.0",
+    "Date": "02:10.6",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER HENYO"
+  },
+  {
+    "Id": "83",
+    "ReceiptDate": "00:00.0",
+    "Date": "02:37.2",
+    "Amount": "7500",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "84",
+    "ReceiptDate": "00:00.0",
+    "Date": "03:06.6",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER REUBEN"
+  },
+  {
+    "Id": "85",
+    "ReceiptDate": "00:00.0",
+    "Date": "03:42.0",
+    "Amount": "370",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "86",
+    "ReceiptDate": "00:00.0",
+    "Date": "04:04.4",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER REUBEN"
+  },
+  {
+    "Id": "87",
+    "ReceiptDate": "00:00.0",
+    "Date": "04:28.7",
+    "Amount": "381",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "88",
+    "ReceiptDate": "00:00.0",
+    "Date": "04:42.8",
+    "Amount": "1970",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "89",
+    "ReceiptDate": "00:00.0",
+    "Date": "04:57.7",
+    "Amount": "2670",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "90",
+    "ReceiptDate": "00:00.0",
+    "Date": "09:41.0",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER HENYO"
+  },
+  {
+    "Id": "91",
+    "ReceiptDate": "00:00.0",
+    "Date": "10:42.1",
+    "Amount": "20000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER HENYO"
+  },
+  {
+    "Id": "92",
+    "ReceiptDate": "00:00.0",
+    "Date": "11:43.9",
+    "Amount": "370",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "BANK CHARGES"
+  },
+  {
+    "Id": "93",
+    "ReceiptDate": "00:00.0",
+    "Date": "13:01.9",
+    "Amount": "1010",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "94",
+    "ReceiptDate": "00:00.0",
+    "Date": "13:12.3",
+    "Amount": "110",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "95",
+    "ReceiptDate": "00:00.0",
+    "Date": "13:23.6",
+    "Amount": "1151",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "96",
+    "ReceiptDate": "00:00.0",
+    "Date": "13:34.3",
+    "Amount": "890",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "97",
+    "ReceiptDate": "00:00.0",
+    "Date": "13:47.7",
+    "Amount": "690",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "98",
+    "ReceiptDate": "00:00.0",
+    "Date": "14:01.9",
+    "Amount": "950",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "99",
+    "ReceiptDate": "00:00.0",
+    "Date": "15:26.8",
+    "Amount": "4842",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "100",
+    "ReceiptDate": "00:00.0",
+    "Date": "15:41.4",
+    "Amount": "1470",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "101",
+    "ReceiptDate": "00:00.0",
+    "Date": "15:59.1",
+    "Amount": "30",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "102",
+    "ReceiptDate": "00:00.0",
+    "Date": "16:10.5",
+    "Amount": "3290",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "OPOKU"
+  },
+  {
+    "Id": "103",
+    "ReceiptDate": "00:00.0",
+    "Date": "16:39.6",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER HENYO"
+  },
+  {
+    "Id": "104",
+    "ReceiptDate": "00:00.0",
+    "Date": "18:42.2",
+    "Amount": "9280",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "105",
+    "ReceiptDate": "00:00.0",
+    "Date": "18:54.7",
+    "Amount": "1470",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "106",
+    "ReceiptDate": "00:00.0",
+    "Date": "19:04.9",
+    "Amount": "1138",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "107",
+    "ReceiptDate": "00:00.0",
+    "Date": "19:18.7",
+    "Amount": "1180",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "108",
+    "ReceiptDate": "00:00.0",
+    "Date": "19:30.1",
+    "Amount": "810",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "109",
+    "ReceiptDate": "00:00.0",
+    "Date": "20:31.6",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER HENYO / SOLOMON MAKPLIBI"
+  },
+  {
+    "Id": "110",
+    "ReceiptDate": "00:00.0",
+    "Date": "21:16.9",
+    "Amount": "80",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "111",
+    "ReceiptDate": "00:00.0",
+    "Date": "21:27.1",
+    "Amount": "1120",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "112",
+    "ReceiptDate": "00:00.0",
+    "Date": "21:37.2",
+    "Amount": "850",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "113",
+    "ReceiptDate": "00:00.0",
+    "Date": "22:16.1",
+    "Amount": "2000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "OLIVER NANA DARKOA"
+  },
+  {
+    "Id": "114",
+    "ReceiptDate": "00:00.0",
+    "Date": "23:13.2",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "CHQ 20016"
+  },
+  {
+    "Id": "115",
+    "ReceiptDate": "00:00.0",
+    "Date": "23:44.5",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "CHQ 20016"
+  },
+  {
+    "Id": "116",
+    "ReceiptDate": "00:00.0",
+    "Date": "24:47.6",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "MICHAEL NYARKO"
+  },
+  {
+    "Id": "117",
+    "ReceiptDate": "00:00.0",
+    "Date": "25:10.4",
+    "Amount": "8000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "118",
+    "ReceiptDate": "00:00.0",
+    "Date": "26:42.3",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER REUBEN"
+  },
+  {
+    "Id": "119",
+    "ReceiptDate": "00:00.0",
+    "Date": "27:36.6",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "120",
+    "ReceiptDate": "00:00.0",
+    "Date": "28:03.0",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "121",
+    "ReceiptDate": "00:00.0",
+    "Date": "28:39.5",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER REUBEN"
+  },
+  {
+    "Id": "122",
+    "ReceiptDate": "00:00.0",
+    "Date": "29:06.5",
+    "Amount": "11420",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SELORM"
+  },
+  {
+    "Id": "123",
+    "ReceiptDate": "00:00.0",
+    "Date": "29:41.3",
+    "Amount": "2530",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SELORM"
+  },
+  {
+    "Id": "124",
+    "ReceiptDate": "00:00.0",
+    "Date": "34:21.7",
+    "Amount": "50",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SELORM"
+  },
+  {
+    "Id": "125",
+    "ReceiptDate": "00:00.0",
+    "Date": "34:36.9",
+    "Amount": "0",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "SELORM"
+  },
+  {
+    "Id": "126",
+    "ReceiptDate": "00:00.0",
+    "Date": "35:21.6",
+    "Amount": "20000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "127",
+    "ReceiptDate": "00:00.0",
+    "Date": "35:38.2",
+    "Amount": "500",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ELDER ELIAS"
+  },
+  {
+    "Id": "128",
+    "ReceiptDate": "00:00.0",
+    "Date": "35:58.2",
+    "Amount": "2153",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SIS ROSELYN"
+  },
+  {
+    "Id": "129",
+    "ReceiptDate": "00:00.0",
+    "Date": "36:11.8",
+    "Amount": "367",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SIS ROSELYN"
+  },
+  {
+    "Id": "130",
+    "ReceiptDate": "00:00.0",
+    "Date": "39:33.8",
+    "Amount": "422",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "BANK CHARGES"
+  },
+  {
+    "Id": "131",
+    "ReceiptDate": "00:00.0",
+    "Date": "15:39.2",
+    "Amount": "4060",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "SIS ROSELYN"
+  },
+  {
+    "Id": "132",
+    "ReceiptDate": "00:00.0",
+    "Date": "16:18.4",
+    "Amount": "25000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELD REUBEN / JOYCE NARTEY"
+  },
+  {
+    "Id": "133",
+    "ReceiptDate": "00:00.0",
+    "Date": "16:46.0",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "ELDER HENYO"
+  },
+  {
+    "Id": "134",
+    "ReceiptDate": "00:00.0",
+    "Date": "17:15.3",
+    "Amount": "2500",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "MICHAEL NARH NYARKO"
+  },
+  {
+    "Id": "135",
+    "ReceiptDate": "00:00.0",
+    "Date": "18:17.8",
+    "Amount": "5000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "TEYE EMMANUEL NARTEY"
+  },
+  {
+    "Id": "136",
+    "ReceiptDate": "00:00.0",
+    "Date": "18:49.7",
+    "Amount": "368",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ALICE"
+  },
+  {
+    "Id": "137",
+    "ReceiptDate": "00:00.0",
+    "Date": "19:42.2",
+    "Amount": "3500",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ALICE"
+  },
+  {
+    "Id": "138",
+    "ReceiptDate": "00:00.0",
+    "Date": "19:58.1",
+    "Amount": "460",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ALICE"
+  },
+  {
+    "Id": "139",
+    "ReceiptDate": "00:00.0",
+    "Date": "20:14.1",
+    "Amount": "786",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "ALICE"
+  },
+  {
+    "Id": "140",
+    "ReceiptDate": "00:00.0",
+    "Date": "20:56.5",
+    "Amount": "10000",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "2",
+    "PaidBy": "CHQ 20017 / MICHAEL"
+  },
+  {
+    "Id": "141",
+    "ReceiptDate": "00:00.0",
+    "Date": "21:55.1",
+    "Amount": "495",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "DANIEL"
+  },
+  {
+    "Id": "142",
+    "ReceiptDate": "00:00.0",
+    "Date": "22:09.0",
+    "Amount": "2880",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "DANIEL"
+  },
+  {
+    "Id": "143",
+    "ReceiptDate": "00:00.0",
+    "Date": "22:21.1",
+    "Amount": "670",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "DANIEL"
+  },
+  {
+    "Id": "144",
+    "ReceiptDate": "00:00.0",
+    "Date": "22:34.0",
+    "Amount": "626",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "DANIEL"
+  },
+  {
+    "Id": "145",
+    "ReceiptDate": "00:00.0",
+    "Date": "22:46.9",
+    "Amount": "160",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "DANIEL"
+  },
+  {
+    "Id": "146",
+    "ReceiptDate": "00:00.0",
+    "Date": "22:57.7",
+    "Amount": "170",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "\"June 16"
+  },
+  {
+    "Id": "147",
+    "ReceiptDate": "00:00.0",
+    "Date": "23:10.1",
+    "Amount": "1060",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "DANIEL"
+  },
+  {
+    "Id": "148",
+    "ReceiptDate": "00:00.0",
+    "Date": "23:31.1",
+    "Amount": "990",
+    "BankAccountId": "1",
+    "BankTransactionTypeId": "1",
+    "PaidBy": "DANIEL"
+  }
+]

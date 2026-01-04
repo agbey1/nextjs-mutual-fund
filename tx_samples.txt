@@ -1,0 +1,17 @@
+=== TRANSACTION INSERT SAMPLES ===
+
+--- TRANSACTION 1 ---
+INSERT [dbo].[Transaction] ([Id], [Amount], [EntryDate], [Date], [ReceiptNumber], [PaymentTotal], [TransactionTypeId], [MemberId], [InterestTotal], [PaymentCompleted], [EntryType], [IsReversal], [ReversedBy]) VALUES (15570, CAST(20.0000 AS Decimal(12, 4)), CAST(N'2025-04-18T10:37:02.6980000' AS DateTime2), CAST(N'2018-09-09T00:00:00.0000000' AS DateTime2), N'2152', CAST(0.00 AS Decimal(18, 2)), 1, 304, CAST(0.00 AS Decimal(18, 2)), 0, N'cr', 0, N'')
+
+--- TRANSACTION 2 ---
+INSERT [dbo].[Transaction] ([Id], [Amount], [EntryDate], [Date], [ReceiptNumber], [PaymentTotal], [TransactionTypeId], [MemberId], [InterestTotal], [PaymentCompleted], [EntryType], [IsReversal], [ReversedBy]) VALUES (15571, CAST(20.0000 AS Decimal(12, 4)), CAST(N'2025-04-18T10:39:24.3460000' AS DateTime2), CAST(N'2018-09-09T00:00:00.0000000' AS DateTime2), N'2153', CAST(0.00 AS Decimal(18, 2)), 1, 303, CAST(0.00 AS Decimal(18, 2)), 0, N'cr', 0, N'')
+
+--- TRANSACTION 3 ---
+INSERT [dbo].[Transaction] ([Id], [Amount], [EntryDate], [Date], [ReceiptNumber], [PaymentTotal], [TransactionTypeId], [MemberId], [InterestTotal], [PaymentCompleted], [EntryType], [IsReversal], [ReversedBy]) VALUES (15572, CAST(100.0000 AS Decimal(12, 4)), CAST(N'2025-04-18T10:40:51.0270000' AS DateTime2), CAST(N'2018-09-09T00:00:00.0000000' AS DateTime2), N'2154', CAST(0.00 AS Decimal(18, 2)), 1, 18, CAST(0.00 AS Decimal(18, 2)), 0, N'cr', 0, N'')
+
+--- TRANSACTION 4 ---
+INSERT [dbo].[Transaction] ([Id], [Amount], [EntryDate], [Date], [ReceiptNumber], [PaymentTotal], [TransactionTypeId], [MemberId], [InterestTotal], [PaymentCompleted], [EntryType], [IsReversal], [ReversedBy]) VALUES (15573, CAST(20.0000 AS Decimal(12, 4)), CAST(N'2025-04-18T10:44:08.0120000' AS DateTime2), CAST(N'2018-09-09T00:00:00.0000000' AS DateTime2), N'1158', CAST(0.00 AS Decimal(18, 2)), 3, 306, CAST(0.00 AS Decimal(18, 2)), 0, N'cr', 0, N'')
+
+--- TRANSACTION 5 ---
+INSERT [dbo].[Transaction] ([Id], [Amount], [EntryDate], [Date], [ReceiptNumber], [PaymentTotal], [TransactionTypeId], [MemberId], [InterestTotal], [PaymentCompleted], [EntryType], [IsReversal], [ReversedBy]) VALUES (15574, CAST(10.0000 AS Decimal(12, 4)), CAST(N'2025-04-18T10:44:08.0120000' AS DateTime2), CAST(N'2018-09-09T00:00:00.0000000' AS DateTime2), N'1158', CAST(0.00 AS Decimal(18, 2)), 1, 306, CAST(0.00 AS Decimal(18, 2)), 0, N'cr', 0, N'')
+

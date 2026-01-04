@@ -1,0 +1,44 @@
+[
+  {
+    "Id": "1",
+    "Date": "00:00.0",
+    "Amount": "230",
+    "Description": "Receipt books"
+  },
+  {
+    "Id": "2",
+    "Date": "00:00.0",
+    "Amount": "100",
+    "Description": "CARPENTER"
+  },
+  {
+    "Id": "3",
+    "Date": "00:00.0",
+    "Amount": "370",
+    "Description": "VALUE BOOKS"
+  },
+  {
+    "Id": "4",
+    "Date": "00:00.0",
+    "Amount": "20",
+    "Description": "NOTE BOOKS"
+  },
+  {
+    "Id": "5",
+    "Date": "00:00.0",
+    "Amount": "800",
+    "Description": "Computer"
+  },
+  {
+    "Id": "6",
+    "Date": "00:00.0",
+    "Amount": "30",
+    "Description": "Extension cable"
+  },
+  {
+    "Id": "7",
+    "Date": "00:00.0",
+    "Amount": "1000",
+    "Description": "RECEIPT BOOKS"
+  }
+]

@@ -1,0 +1,1227 @@
+{
+  "1": {
+    "savings": 170,
+    "shares": 250,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 8
+  },
+  "2": {
+    "savings": 40,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "3": {
+    "savings": 5040,
+    "shares": 10,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 9
+  },
+  "4": {
+    "savings": 200,
+    "shares": 200,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 8
+  },
+  "6": {
+    "savings": 100,
+    "shares": 200,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 5
+  },
+  "7": {
+    "savings": 6486,
+    "shares": 550,
+    "loans": -50,
+    "interest": 50,
+    "transactionCount": 43
+  },
+  "8": {
+    "savings": 30,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "10": {
+    "savings": 10,
+    "shares": 10,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "12": {
+    "savings": 40,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "14": {
+    "savings": 340,
+    "shares": 70,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 8
+  },
+  "16": {
+    "savings": 40,
+    "shares": 60,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "17": {
+    "savings": 410,
+    "shares": 430,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 20
+  },
+  "18": {
+    "savings": 100,
+    "shares": 100,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "19": {
+    "savings": 100,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "20": {
+    "savings": 30,
+    "shares": 90,
+    "loans": 2000,
+    "interest": 240,
+    "transactionCount": 10
+  },
+  "293": {
+    "savings": 510,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 11
+  },
+  "294": {
+    "savings": 350,
+    "shares": 300,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "295": {
+    "savings": 350,
+    "shares": 120,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 8
+  },
+  "296": {
+    "savings": 1250,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 14
+  },
+  "299": {
+    "savings": 680,
+    "shares": 100,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "300": {
+    "savings": 130,
+    "shares": 400,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "301": {
+    "savings": 140,
+    "shares": 210,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 8
+  },
+  "302": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "303": {
+    "savings": 50,
+    "shares": 60,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 5
+  },
+  "304": {
+    "savings": 3310,
+    "shares": 490,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 94
+  },
+  "306": {
+    "savings": 90,
+    "shares": 200,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 38
+  },
+  "307": {
+    "savings": 700,
+    "shares": 165,
+    "loans": 500,
+    "interest": 50,
+    "transactionCount": 27
+  },
+  "308": {
+    "savings": 5,
+    "shares": 10,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "310": {
+    "savings": 25,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "311": {
+    "savings": 2190,
+    "shares": 0,
+    "loans": 4000,
+    "interest": 480,
+    "transactionCount": 5
+  },
+  "313": {
+    "savings": 10,
+    "shares": 10,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "316": {
+    "savings": 900,
+    "shares": 500,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 14
+  },
+  "317": {
+    "savings": 450,
+    "shares": 200,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 13
+  },
+  "318": {
+    "savings": 480,
+    "shares": 170,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 28
+  },
+  "320": {
+    "savings": 320,
+    "shares": 10,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 13
+  },
+  "321": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "322": {
+    "savings": 2000,
+    "shares": 100,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 31
+  },
+  "323": {
+    "savings": 100,
+    "shares": 100,
+    "loans": 5000,
+    "interest": 400,
+    "transactionCount": 5
+  },
+  "324": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "325": {
+    "savings": 250,
+    "shares": 170,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 13
+  },
+  "326": {
+    "savings": 30,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "327": {
+    "savings": 110,
+    "shares": 30,
+    "loans": 300,
+    "interest": 120,
+    "transactionCount": 14
+  },
+  "328": {
+    "savings": 50,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "329": {
+    "savings": 100,
+    "shares": 280,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 17
+  },
+  "330": {
+    "savings": 10,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "331": {
+    "savings": 300,
+    "shares": 200,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 5
+  },
+  "332": {
+    "savings": 1700,
+    "shares": 520,
+    "loans": 0,
+    "interest": 480,
+    "transactionCount": 64
+  },
+  "333": {
+    "savings": 0,
+    "shares": 100,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "334": {
+    "savings": 30,
+    "shares": 10,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "336": {
+    "savings": 150,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "337": {
+    "savings": 70,
+    "shares": 100,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "338": {
+    "savings": 150,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "340": {
+    "savings": 140,
+    "shares": 140,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 6
+  },
+  "341": {
+    "savings": 980,
+    "shares": 70,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 25
+  },
+  "342": {
+    "savings": 20,
+    "shares": 20,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "343": {
+    "savings": 520,
+    "shares": 270,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 41
+  },
+  "344": {
+    "savings": 80,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 8
+  },
+  "346": {
+    "savings": 100,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "348": {
+    "savings": 40,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "351": {
+    "savings": 120,
+    "shares": 40,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "353": {
+    "savings": 180,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 14
+  },
+  "354": {
+    "savings": 240,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "355": {
+    "savings": 200,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "356": {
+    "savings": 0,
+    "shares": 190,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "358": {
+    "savings": 625,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 9
+  },
+  "359": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "360": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "361": {
+    "savings": 525,
+    "shares": 500,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 8
+  },
+  "362": {
+    "savings": 10,
+    "shares": 300,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "363": {
+    "savings": 40,
+    "shares": 10,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "364": {
+    "savings": 100,
+    "shares": 10,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "365": {
+    "savings": 100,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "367": {
+    "savings": 270,
+    "shares": 350,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 7
+  },
+  "368": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "370": {
+    "savings": 220,
+    "shares": 120,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 11
+  },
+  "371": {
+    "savings": 1145,
+    "shares": 510,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 64
+  },
+  "372": {
+    "savings": 1625,
+    "shares": 500,
+    "loans": 1305,
+    "interest": 60,
+    "transactionCount": 14
+  },
+  "373": {
+    "savings": 100,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "374": {
+    "savings": 70,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "375": {
+    "savings": 872,
+    "shares": 500,
+    "loans": -288,
+    "interest": 288,
+    "transactionCount": 34
+  },
+  "376": {
+    "savings": 100,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 5
+  },
+  "377": {
+    "savings": 250,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 6
+  },
+  "378": {
+    "savings": 650,
+    "shares": 75,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 9
+  },
+  "379": {
+    "savings": 100,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "380": {
+    "savings": 0,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "381": {
+    "savings": 2200,
+    "shares": 200,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "383": {
+    "savings": 610,
+    "shares": 170,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "384": {
+    "savings": 290,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "385": {
+    "savings": 40,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 12
+  },
+  "386": {
+    "savings": 220,
+    "shares": 250,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 13
+  },
+  "387": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "388": {
+    "savings": 500,
+    "shares": 500,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 12
+  },
+  "389": {
+    "savings": 560,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 9
+  },
+  "390": {
+    "savings": 420,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 9
+  },
+  "391": {
+    "savings": 2350,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 31
+  },
+  "392": {
+    "savings": 2350,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 31
+  },
+  "393": {
+    "savings": 150,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 5
+  },
+  "394": {
+    "savings": 90,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "395": {
+    "savings": 10,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "397": {
+    "savings": 100,
+    "shares": 90,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "398": {
+    "savings": 123,
+    "shares": 500,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 26
+  },
+  "400": {
+    "savings": 140,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "401": {
+    "savings": 0,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 5
+  },
+  "402": {
+    "savings": 0,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 6
+  },
+  "403": {
+    "savings": 180,
+    "shares": 20,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "404": {
+    "savings": 40,
+    "shares": 10,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "406": {
+    "savings": 80,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "407": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "408": {
+    "savings": 55,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 5
+  },
+  "409": {
+    "savings": 1950,
+    "shares": 190,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 46
+  },
+  "411": {
+    "savings": 1000,
+    "shares": 500,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 12
+  },
+  "412": {
+    "savings": 50,
+    "shares": 350,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 12
+  },
+  "413": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "414": {
+    "savings": 970,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "415": {
+    "savings": 200,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 7
+  },
+  "416": {
+    "savings": 150,
+    "shares": 50,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 6
+  },
+  "417": {
+    "savings": 10,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "419": {
+    "savings": 310,
+    "shares": 0,
+    "loans": 1230,
+    "interest": 188,
+    "transactionCount": 20
+  },
+  "420": {
+    "savings": 2000,
+    "shares": 500,
+    "loans": 5500,
+    "interest": 1260,
+    "transactionCount": 12
+  },
+  "421": {
+    "savings": 50,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "422": {
+    "savings": 590,
+    "shares": 270,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 30
+  },
+  "424": {
+    "savings": 100,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "425": {
+    "savings": 290,
+    "shares": 70,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 23
+  },
+  "426": {
+    "savings": 0,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "427": {
+    "savings": 190,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "428": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "430": {
+    "savings": 50,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "431": {
+    "savings": 420,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 16
+  },
+  "432": {
+    "savings": 215,
+    "shares": 350,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 14
+  },
+  "433": {
+    "savings": 200,
+    "shares": 200,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "434": {
+    "savings": 30,
+    "shares": 40,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 9
+  },
+  "435": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 8
+  },
+  "436": {
+    "savings": 90,
+    "shares": 100,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "437": {
+    "savings": 10,
+    "shares": 10,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "438": {
+    "savings": 100,
+    "shares": 100,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 5
+  },
+  "439": {
+    "savings": 170,
+    "shares": 200,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 5
+  },
+  "441": {
+    "savings": 20,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "442": {
+    "savings": 350,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "443": {
+    "savings": 210,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "444": {
+    "savings": 200,
+    "shares": 500,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 7
+  },
+  "445": {
+    "savings": 0,
+    "shares": 0,
+    "loans": 500,
+    "interest": 50,
+    "transactionCount": 1
+  },
+  "446": {
+    "savings": 480,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 6
+  },
+  "447": {
+    "savings": 40,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "448": {
+    "savings": 10,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "449": {
+    "savings": 0,
+    "shares": 500,
+    "loans": -60,
+    "interest": 40,
+    "transactionCount": 28
+  },
+  "450": {
+    "savings": 35,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "451": {
+    "savings": 150,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "452": {
+    "savings": 1330,
+    "shares": 20,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 21
+  },
+  "453": {
+    "savings": 60,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "454": {
+    "savings": 440,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "456": {
+    "savings": 100,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "457": {
+    "savings": 550,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "460": {
+    "savings": 110,
+    "shares": 110,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 8
+  },
+  "461": {
+    "savings": 50,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "463": {
+    "savings": 0,
+    "shares": 0,
+    "loans": 26,
+    "interest": 60,
+    "transactionCount": 4
+  },
+  "464": {
+    "savings": 400,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "465": {
+    "savings": 310,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 7
+  },
+  "467": {
+    "savings": 50,
+    "shares": 500,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "468": {
+    "savings": 440,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "469": {
+    "savings": 290,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "470": {
+    "savings": 1150,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 4
+  },
+  "471": {
+    "savings": 220,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 6
+  },
+  "473": {
+    "savings": 100,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 2
+  },
+  "475": {
+    "savings": 0,
+    "shares": 60,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "476": {
+    "savings": 220,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "478": {
+    "savings": 190,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "479": {
+    "savings": 190,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "480": {
+    "savings": 190,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  },
+  "483": {
+    "savings": 300,
+    "shares": 150,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 7
+  },
+  "484": {
+    "savings": 110,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "485": {
+    "savings": 150,
+    "shares": 200,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 3
+  },
+  "1572": {
+    "savings": 1800,
+    "shares": 500,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 13
+  },
+  "1573": {
+    "savings": 450,
+    "shares": 200,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 13
+  },
+  "1574": {
+    "savings": 1355,
+    "shares": 465,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 60
+  },
+  "1576": {
+    "savings": 100,
+    "shares": 0,
+    "loans": 0,
+    "interest": 0,
+    "transactionCount": 1
+  }
+}
