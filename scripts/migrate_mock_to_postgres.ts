@@ -65,7 +65,7 @@ async function migrate() {
                 // Check if tx exists
                 const existingTx = await prisma.transaction.findFirst({
                     where: {
-                        receiptNumber: tx.receiptNo || tx.receiptNumber, // Handle legacy property name
+                        receiptNumber: tx.receiptNo || (tx as any).receiptNumber, // Handle legacy property name
                         memberId: dbMember.id
                     }
                 });
@@ -80,7 +80,7 @@ async function migrate() {
                             principalAmount: tx.principalAmount || 0,
                             date: new Date(tx.date),
                             description: tx.description,
-                            receiptNumber: tx.receiptNo || tx.receiptNumber,
+                            receiptNumber: tx.receiptNo || (tx as any).receiptNumber,
                             isReversal: tx.isReversal || false
                         }
                     });
