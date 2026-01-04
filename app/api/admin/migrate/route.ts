@@ -140,14 +140,11 @@ export async function GET(request: Request) {
                     for (const tx of m.transactions) {
                         const receiptNum = tx.receiptNo || (tx as any).receiptNumber || `TX-${tx.id}`;
 
-                        // Check by ID instead of receipt for uniqueness
-                        const existingTx = await prisma.transaction.findFirst({
-                            where: {
-                                OR: [
-                                    { id: tx.id },
-                                    { receiptNumber: receiptNum, memberId: dbMember.id }
-                                ]
-                            }
+                        // Check by ID primarily. 
+                        // Only fallback to receipt check if strict ID match fails AND it's a legacy system transaction without ID.
+                        // But here we have IDs. The previous logic prevented multiple items per receipt.
+                        const existingTx = await prisma.transaction.findUnique({
+                            where: { id: tx.id }
                         });
 
                         if (!existingTx) {
