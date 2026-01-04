@@ -22,6 +22,23 @@ export async function GET(request: Request) {
 
         log(`Starting migration... Members: ${mockMembers.length}`);
 
+        // 0. Create standalone Admin user (username: admin, password: admin)
+        const existingAdmin = await prisma.user.findUnique({ where: { username: 'admin' } });
+        if (!existingAdmin) {
+            const adminHash = await hashPassword('admin');
+            await prisma.user.create({
+                data: {
+                    username: 'admin',
+                    password: adminHash,
+                    role: 'ADMIN',
+                    name: 'System Administrator'
+                }
+            });
+            log('Created Admin user (admin/admin)');
+        } else {
+            log('Admin user already exists');
+        }
+
         // 1. Users & Members
         for (const m of mockMembers) {
             const hashedPassword = await hashPassword(m.phone.toString());
