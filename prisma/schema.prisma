@@ -171,6 +171,11 @@ model BankTransaction {
   type            TransactionType // Uses DEPOSIT / WITHDRAWAL from existing enum
   description     String?         // 'PaidBy'
   
+  // Linkage
+  memberId        String?
+  member          Member?         @relation(fields: [memberId], references: [id])
+  isLinked        Boolean         @default(false)
+
   // Optional linkage or migration fields
   reference       String?         // Receipt number or ID from excel
   

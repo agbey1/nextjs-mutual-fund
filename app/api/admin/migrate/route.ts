@@ -2,6 +2,7 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 import { mockMembers, mockExpenses, mockAuditLogs } from '@/lib/mockData';
+import { missingMembers } from '@/lib/missingMembers';
 import { hashPassword } from '@/lib/hash';
 
 export async function GET(request: Request) {
@@ -42,12 +43,15 @@ export async function GET(request: Request) {
         let expensesCreated = 0;
         let bankTxCreated = 0;
 
+        // Combine members
+        const allMembers = [...mockMembers, ...missingMembers];
+
         // Count total expected transactions from mockData
-        for (const m of mockMembers) {
+        for (const m of allMembers) {
             totalExpectedTx += (m.transactions?.length || 0);
         }
 
-        log(`Starting migration... Members: ${mockMembers.length}, Expected Transactions: ${totalExpectedTx}`);
+        log(`Starting migration... Members: ${allMembers.length}, Expected Transactions: ${totalExpectedTx}`);
 
         // 0. Create standalone Admin user (username: admin, password: admin)
         const existingAdmin = await prisma.user.findUnique({ where: { username: 'admin' } });
@@ -69,7 +73,7 @@ export async function GET(request: Request) {
         }
 
         // 1. Users & Members
-        for (const m of mockMembers) {
+        for (const m of allMembers) {
             const hashedPassword = await hashPassword(m.phone.toString());
 
             let user = await prisma.user.findUnique({ where: { username: m.accountNumber } });
@@ -191,6 +195,17 @@ export async function GET(request: Request) {
         const { mockBankTransactions } = await import('@/lib/bankData');
         log(`Migrating ${mockBankTransactions.length} bank transactions...`);
 
+        // Helper to normalize names for matching
+        const cleanName = (name: string) => name?.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+        // Pre-build member lookup map (Name -> Member ID)
+        const memberMap = new Map<string, any>();
+        for (const m of allMembers) {
+            const fullName = `${m.firstName} ${m.lastName}`;
+            memberMap.set(cleanName(fullName), m);
+            memberMap.set(cleanName(m.lastName + m.firstName), m); // reverse check
+        }
+
         for (const btx of mockBankTransactions) {
             const existing = await prisma.bankTransaction.findFirst({
                 where: { reference: btx.Id.toString() }
@@ -201,16 +216,76 @@ export async function GET(request: Request) {
                 const excelDate = btx.ReceiptDate || btx.Date;
                 const jsDate = new Date((excelDate - 25569) * 86400 * 1000);
 
+                // Attempt to find member
+                let matchedMember = null;
+                const payer = btx.PaidBy ? cleanName(btx.PaidBy) : '';
+
+                if (payer) {
+                    // Special overrides
+                    if (payer.includes('sisroselyn') || payer === 'roselyn') {
+                        // Find by account number for robustness
+                        matchedMember = allMembers.find(m => m.accountNumber === '1000061');
+                    } else {
+                        // Fuzzy / Exact match attempts
+                        matchedMember = memberMap.get(payer);
+
+                        // Fallback: Check if PaidBy contains Last Name of any member
+                        if (!matchedMember) {
+                            matchedMember = allMembers.find(m =>
+                                payer.includes(cleanName(m.lastName)) &&
+                                payer.includes(cleanName(m.firstName))
+                            );
+                        }
+                    }
+                }
+
+                // Get real DB ID if we found a mock member
+                let dbMemberId = null;
+                if (matchedMember) {
+                    const dbMember = await prisma.member.findUnique({ where: { accountNumber: matchedMember.accountNumber } });
+                    dbMemberId = dbMember?.id;
+                }
+
+                // Create Bank Transaction
                 await prisma.bankTransaction.create({
                     data: {
                         date: jsDate,
                         amount: btx.Amount,
                         type: btx.BankTransactionTypeId === 1 ? 'DEPOSIT' : 'WITHDRAWAL',
                         description: btx.PaidBy,
-                        reference: btx.Id.toString()
+                        reference: btx.Id.toString(),
+                        memberId: dbMemberId,
+                        isLinked: !!dbMemberId
                     }
                 });
                 bankTxCreated++;
+
+                // IF Matched and it's a DEPOSIT (Type 1), credit the member's Savings
+                if (dbMemberId && btx.BankTransactionTypeId === 1) {
+                    // Check if this transaction already exists to avoid duplicates
+                    // We use the Bank Transaction ID as part of the receipt number to track it
+                    const bankReceiptRef = `BANK-${btx.Id}`;
+
+                    const existingTx = await prisma.transaction.findFirst({
+                        where: { receiptNumber: bankReceiptRef }
+                    });
+
+                    if (!existingTx) {
+                        await prisma.transaction.create({
+                            data: {
+                                memberId: dbMemberId,
+                                type: 'SAVINGS_DEPOSIT',
+                                amount: btx.Amount,
+                                date: jsDate,
+                                description: `Bank Deposit: ${btx.PaidBy}`,
+                                receiptNumber: bankReceiptRef,
+                                isReversal: false,
+                                paymentMethod: 'BANK_TRANSFER'
+                            }
+                        });
+                        log(`Linked Bank TX ${btx.Id} (${btx.Amount}) to Member ${matchedMember?.firstName} ${matchedMember?.lastName}`);
+                    }
+                }
             }
         }
 
