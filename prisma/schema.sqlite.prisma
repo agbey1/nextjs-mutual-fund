@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:../dev.db"
 }
 
 // Enums
@@ -24,10 +24,6 @@ enum Gender {
 enum TransactionType {
   DEPOSIT
   WITHDRAWAL
-  SAVINGS_DEPOSIT
-  SAVINGS_WITHDRAWAL
-  SHARE_PURCHASE
-  SHARE_WITHDRAWAL
   LOAN_DISBURSAL
   LOAN_REPAYMENT
 }
@@ -67,16 +63,16 @@ model Member {
   phone         String    @unique
   email         String?
   address       String?
-  gps           String?   @map("gpsAddress")
+  gpsAddress    String?
   
   // Banking
   accountNumber String    @unique
   
   // Beneficiary
   beneficiaryName         String?
-  beneficiaryRelationship String? @map("beneficiaryRelation")
-  beneficiaryAddress      String?
+  beneficiaryRelation     String?
   beneficiaryContact      String?
+  beneficiaryAddress      String? // Added based on earlier code
   
   // Relations
   transactions  Transaction[]
@@ -85,7 +81,7 @@ model Member {
   // Stats (Optimized for read)
   totalSavings  Decimal   @default(0) 
   totalLoans    Decimal   @default(0) 
-  totalShares   Decimal   @default(0)
+  totalShares   Decimal   @default(0) // Added for completeness
   
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
@@ -105,17 +101,11 @@ model Transaction {
   principalAmount Decimal         @default(0) 
   
   description     String?
-  receiptNumber   String?         @map("reference")
+  reference       String?         // Receipt number or check ref
   date            DateTime        @default(now())
   
   recordedBy      String?         // Admin ID who entered it
   
-  // New fields
-  paymentCompleted Boolean        @default(true)
-  paymentMethod    String?
-  isReversal       Boolean        @default(false)
-  originalTransactionId String? // self-referencing relation optional
-
   createdAt       DateTime        @default(now())
 }
 
@@ -131,7 +121,32 @@ model Expense {
   createdAt   DateTime  @default(now())
 }
 
-// Loan Request Model (New)
+// System Bank Tranasctions (for reconciliation with physical bank)
+model BankTransaction {
+  id          String    @id @default(cuid())
+  amount      Decimal   
+  type        String    // Deposit/Withdrawal
+  date        DateTime
+  description String?
+  
+  createdAt   DateTime  @default(now())
+}
+
+// Dividend History
+model DividendDistribution {
+  id          String   @id @default(cuid())
+  year        Int
+  totalInterest Decimal 
+  totalExpenses Decimal 
+  netDistributable Decimal 
+  
+  ratePerShare Decimal 
+  
+  date        DateTime @default(now())
+  approvedBy  String?
+}
+
+// Loan Request Model
 model LoanRequest {
   id              String    @id @default(cuid())
   memberId        String
@@ -140,24 +155,25 @@ model LoanRequest {
   purpose         String?
   repaymentPeriod Int       // Months
   
-  interestType    String    @default("PERCENTAGE") // PERCENTAGE | FIXED
-  interestRate    Decimal   @default(10)
-  interestAmount  Decimal   @default(0) 
-  
   status          String    @default("PENDING") // PENDING, APPROVED, REJECTED, DISBURSED
   requestedBy     String?
+  
+  // Flexible Interest
+  interestType    String    @default("PERCENTAGE") // PERCENTAGE | FIXED
+  interestRate    Decimal   @default(10) // If percentage
+  interestAmount  Decimal   @default(0) // If fixed amount
   
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 }
 
-// Audit Log
+// Audit Log (Added based on feature)
 model AuditLog {
   id          String   @id @default(cuid())
   action      String
   entityType  String
   entityId    String?
   details     String? // JSON string
-  userId      String? @map("performedBy")
-  createdAt   DateTime @default(now()) @map("timestamp")
+  performedBy String?
+  timestamp   DateTime @default(now())
 }
