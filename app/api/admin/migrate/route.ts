@@ -1,16 +1,10 @@
 
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/lib/prisma';
 import { mockMembers, mockExpenses, mockAuditLogs } from '@/lib/mockData';
 import { hashPassword } from '@/lib/hash';
 
-// Use strict typing for production safety
-type PrismaClientType = InstanceType<typeof PrismaClient>;
-
-// Instantiate strictly for this operation to avoid global conflicts
-const prisma = new PrismaClient();
-
-export async function POST(request: Request) {
+export async function GET(request: Request) {
     try {
         // Simple security check (Authorization header or just simple secret param?)
         // For now, we'll assume the user visits this once. 
