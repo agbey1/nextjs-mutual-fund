@@ -6,9 +6,6 @@ import { hashPassword } from '@/lib/hash';
 
 export async function GET(request: Request) {
     try {
-        // Simple security check (Authorization header or just simple secret param?)
-        // For now, we'll assume the user visits this once. 
-        // We can check query param ?secret=MY_SECRET
         const { searchParams } = new URL(request.url);
         const secret = searchParams.get('secret');
 
@@ -20,7 +17,23 @@ export async function GET(request: Request) {
         const logs: string[] = [];
         const log = (msg: string) => { console.log(msg); logs.push(msg); };
 
-        log(`Starting migration... Members: ${mockMembers.length}`);
+        // Statistics
+        let usersCreated = 0;
+        let usersSkipped = 0;
+        let membersCreated = 0;
+        let membersSkipped = 0;
+        let membersWithDuplicatePhone = 0;
+        let totalExpectedTx = 0;
+        let txCreated = 0;
+        let txSkipped = 0;
+        let membersWithNoTx = 0;
+
+        // Count total expected transactions from mockData
+        for (const m of mockMembers) {
+            totalExpectedTx += (m.transactions?.length || 0);
+        }
+
+        log(`Starting migration... Members: ${mockMembers.length}, Expected Transactions: ${totalExpectedTx}`);
 
         // 0. Create standalone Admin user (username: admin, password: admin)
         const existingAdmin = await prisma.user.findUnique({ where: { username: 'admin' } });
@@ -35,8 +48,10 @@ export async function GET(request: Request) {
                 }
             });
             log('Created Admin user (admin/admin)');
+            usersCreated++;
         } else {
             log('Admin user already exists');
+            usersSkipped++;
         }
 
         // 1. Users & Members
@@ -53,24 +68,25 @@ export async function GET(request: Request) {
                         name: `${m.firstName} ${m.lastName}`
                     }
                 });
-                log(`Created User: ${user.username}`);
+                usersCreated++;
+            } else {
+                usersSkipped++;
             }
 
-            // Check if member already exists by accountNumber (skip if exists)
+            // Check if member already exists by accountNumber
             const existingMember = await prisma.member.findUnique({ where: { accountNumber: m.accountNumber } });
 
             if (existingMember) {
-                log(`Skipped Member (exists): ${m.accountNumber}`);
+                membersSkipped++;
             } else {
                 // Check if phone is already in use - if so, make it unique
                 let phone = m.phone.toString();
                 const existingByPhone = await prisma.member.findUnique({ where: { phone: phone } });
 
                 if (existingByPhone) {
-                    // Phone is duplicate (e.g., minor using parent's phone)
-                    // Make it unique by appending account number
                     phone = `${phone}-${m.accountNumber}`;
-                    log(`Duplicate phone detected for ${m.accountNumber}, using: ${phone}`);
+                    membersWithDuplicatePhone++;
+                    log(`Duplicate phone for ${m.accountNumber}, using: ${phone}`);
                 }
 
                 await prisma.member.create({
@@ -93,24 +109,30 @@ export async function GET(request: Request) {
                         totalLoans: m.totalLoans
                     }
                 });
-                log(`Created Member: ${m.accountNumber}`);
+                membersCreated++;
             }
 
-            // Transactions
+            // Transactions - ALWAYS process (even for existing members)
             if (m.transactions && m.transactions.length > 0) {
                 const dbMember = await prisma.member.findUnique({ where: { accountNumber: m.accountNumber } });
                 if (dbMember) {
                     for (const tx of m.transactions) {
+                        const receiptNum = tx.receiptNo || (tx as any).receiptNumber || `TX-${tx.id}`;
+
+                        // Check by ID instead of receipt for uniqueness
                         const existingTx = await prisma.transaction.findFirst({
                             where: {
-                                receiptNumber: tx.receiptNo || (tx as any).receiptNumber,
-                                memberId: dbMember.id
+                                OR: [
+                                    { id: tx.id },
+                                    { receiptNumber: receiptNum, memberId: dbMember.id }
+                                ]
                             }
                         });
 
                         if (!existingTx) {
                             await prisma.transaction.create({
                                 data: {
+                                    id: tx.id, // Use original ID
                                     memberId: dbMember.id,
                                     type: tx.type as any,
                                     amount: tx.amount,
@@ -118,21 +140,25 @@ export async function GET(request: Request) {
                                     principalAmount: tx.principalAmount || 0,
                                     date: new Date(tx.date),
                                     description: tx.description,
-                                    receiptNumber: tx.receiptNo || (tx as any).receiptNumber,
+                                    receiptNumber: receiptNum,
                                     isReversal: tx.isReversal || false
                                 }
                             });
+                            txCreated++;
+                        } else {
+                            txSkipped++;
                         }
                     }
-                    log(`Processed transactions for ${m.accountNumber}`);
                 }
+            } else {
+                membersWithNoTx++;
             }
         }
 
         // 2. Expenses
         log(`Migrating ${mockExpenses.length} expenses...`);
+        let expensesCreated = 0;
         for (const exp of mockExpenses) {
-            // Check existence by ID if possible, or just create (mock IDs are simple)
             const existing = await prisma.expense.findUnique({ where: { id: exp.id } });
             if (!existing) {
                 await prisma.expense.create({
@@ -144,14 +170,28 @@ export async function GET(request: Request) {
                         category: exp.category
                     }
                 });
+                expensesCreated++;
             }
         }
 
-        // 3. Audit Logs
-        // Skip for now or implement similarly if critical
+        // Summary
+        const summary = {
+            users: { created: usersCreated, skipped: usersSkipped },
+            members: { created: membersCreated, skipped: membersSkipped, duplicatePhones: membersWithDuplicatePhone },
+            transactions: { expected: totalExpectedTx, created: txCreated, skipped: txSkipped },
+            membersWithNoTransactions: membersWithNoTx,
+            expenses: { created: expensesCreated }
+        };
 
+        log(`=== MIGRATION SUMMARY ===`);
+        log(`Users: ${usersCreated} created, ${usersSkipped} skipped`);
+        log(`Members: ${membersCreated} created, ${membersSkipped} skipped, ${membersWithDuplicatePhone} with duplicate phones`);
+        log(`Transactions: ${txCreated} created, ${txSkipped} skipped (Expected: ${totalExpectedTx})`);
+        log(`Members with NO transactions in mockData: ${membersWithNoTx}`);
+        log(`Expenses: ${expensesCreated} created`);
         log('Migration Complete');
-        return NextResponse.json({ success: true, logs });
+
+        return NextResponse.json({ success: true, summary, logs });
 
     } catch (error: any) {
         console.error('Migration failed:', error);
