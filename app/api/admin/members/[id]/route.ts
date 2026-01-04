@@ -14,7 +14,12 @@ export async function GET(
     try {
         const { id } = await params;
         const member = await prisma.member.findUnique({
-            where: { id }
+            where: { id },
+            include: {
+                transactions: {
+                    orderBy: { date: 'desc' }
+                }
+            }
         });
 
         if (!member) {
