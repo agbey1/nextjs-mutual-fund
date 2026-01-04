@@ -39,8 +39,11 @@ export async function GET(request: Request) {
                 log(`Created User: ${user.username}`);
             }
 
+            // Check by both accountNumber AND phone (both are unique)
             const existingMember = await prisma.member.findUnique({ where: { accountNumber: m.accountNumber } });
-            if (!existingMember) {
+            const existingByPhone = await prisma.member.findUnique({ where: { phone: m.phone.toString() } });
+
+            if (!existingMember && !existingByPhone) {
                 await prisma.member.create({
                     data: {
                         userId: user.id,
@@ -62,6 +65,8 @@ export async function GET(request: Request) {
                     }
                 });
                 log(`Created Member: ${m.accountNumber}`);
+            } else {
+                log(`Skipped Member (exists): ${m.accountNumber}`);
             }
 
             // Transactions
