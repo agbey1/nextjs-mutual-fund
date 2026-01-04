@@ -273,6 +273,10 @@ const PrismaClient = class {
             }
 
             throw new Error(`Transaction ${args.where.id} not found`);
+        },
+        findUnique: async (args: any) => {
+            const all = getAllTransactions();
+            return all.find((t: any) => t.id === args?.where?.id) || null;
         }
     };
 

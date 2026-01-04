@@ -18,6 +18,7 @@ interface SavingsTrendData {
 interface LoanDistributionData {
     name: string;
     value: number;
+    [key: string]: any;
 }
 
 interface MonthlyContributionData {
@@ -72,7 +73,7 @@ export function LoanDistributionChart({ data }: { data: LoanDistributionData[] }
                     fill="#8884d8"
                     paddingAngle={5}
                     dataKey="value"
-                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                    label={({ name, percent }: any) => `${name} ${(percent * 100).toFixed(0)}%`}
                 >
                     {data.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -80,7 +81,7 @@ export function LoanDistributionChart({ data }: { data: LoanDistributionData[] }
                 </Pie>
                 <Tooltip
                     contentStyle={{ backgroundColor: '#1F2937', border: 'none', borderRadius: '8px' }}
-                    formatter={(value: number) => [`GH₵ ${value.toLocaleString()}`, 'Amount']}
+                    formatter={(value: any) => [`GH₵ ${value.toLocaleString()}`, 'Amount']}
                 />
                 <Legend />
             </PieChart>
@@ -98,7 +99,7 @@ export function MonthlyContributionsChart({ data }: { data: MonthlyContributionD
                 <Tooltip
                     contentStyle={{ backgroundColor: '#1F2937', border: 'none', borderRadius: '8px' }}
                     labelStyle={{ color: '#F3F4F6' }}
-                    formatter={(value: number) => [`GH₵ ${value.toLocaleString()}`, '']}
+                    formatter={(value: any) => [`GH₵ ${value.toLocaleString()}`, '']}
                 />
                 <Legend />
                 <Bar dataKey="deposits" fill="#10B981" name="Deposits" radius={[4, 4, 0, 0]} />
