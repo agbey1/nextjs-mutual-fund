@@ -39,7 +39,7 @@ export async function GET(request: Request) {
                 totalShares: member.totalShares
             },
             transactionCount: totalTxCount,
-            recentTransactions: transactions.map(t => ({
+            recentTransactions: transactions.map((t: any) => ({
                 id: t.id,
                 type: t.type,
                 amount: t.amount,
