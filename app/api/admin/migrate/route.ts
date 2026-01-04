@@ -56,11 +56,23 @@ export async function GET(request: Request) {
                 log(`Created User: ${user.username}`);
             }
 
-            // Check by both accountNumber AND phone (both are unique)
+            // Check if member already exists by accountNumber (skip if exists)
             const existingMember = await prisma.member.findUnique({ where: { accountNumber: m.accountNumber } });
-            const existingByPhone = await prisma.member.findUnique({ where: { phone: m.phone.toString() } });
 
-            if (!existingMember && !existingByPhone) {
+            if (existingMember) {
+                log(`Skipped Member (exists): ${m.accountNumber}`);
+            } else {
+                // Check if phone is already in use - if so, make it unique
+                let phone = m.phone.toString();
+                const existingByPhone = await prisma.member.findUnique({ where: { phone: phone } });
+
+                if (existingByPhone) {
+                    // Phone is duplicate (e.g., minor using parent's phone)
+                    // Make it unique by appending account number
+                    phone = `${phone}-${m.accountNumber}`;
+                    log(`Duplicate phone detected for ${m.accountNumber}, using: ${phone}`);
+                }
+
                 await prisma.member.create({
                     data: {
                         userId: user.id,
@@ -69,12 +81,12 @@ export async function GET(request: Request) {
                         gender: m.gender as any,
                         dateOfBirth: new Date(m.dateOfBirth === "00:00.0" ? "1970-01-01" : m.dateOfBirth),
                         accountNumber: m.accountNumber,
-                        phone: m.phone.toString(),
+                        phone: phone,
                         email: m.email,
                         address: m.address,
-                        gps: m.gps, // Maps to gpsAddress in DB
+                        gps: m.gps,
                         beneficiaryName: m.beneficiaryName,
-                        beneficiaryRelationship: m.beneficiaryRelationship, // DB field beneficiaryRelation
+                        beneficiaryRelationship: m.beneficiaryRelationship,
                         beneficiaryAddress: m.beneficiaryAddress,
                         totalSavings: m.totalSavings,
                         totalShares: m.totalShares,
@@ -82,8 +94,6 @@ export async function GET(request: Request) {
                     }
                 });
                 log(`Created Member: ${m.accountNumber}`);
-            } else {
-                log(`Skipped Member (exists): ${m.accountNumber}`);
             }
 
             // Transactions
