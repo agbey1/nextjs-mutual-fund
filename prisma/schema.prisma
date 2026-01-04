@@ -81,6 +81,7 @@ model Member {
   // Relations
   transactions  Transaction[]
   loanRequests  LoanRequest[]
+  bankTransactions BankTransaction[]
 
   // Stats (Optimized for read)
   totalSavings  Decimal   @default(0) 
