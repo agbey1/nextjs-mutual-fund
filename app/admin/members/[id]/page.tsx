@@ -351,20 +351,34 @@ export default function MemberDetailPage() {
             }
 
             {/* Financial Summary - Three Accounts */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow p-6 text-white">
-                    <h3 className="text-lg font-medium opacity-90">Savings Balance</h3>
-                    <p className="text-3xl font-bold mt-2">{formatCurrency(member.totalSavings || 0)}</p>
-                </div>
-                <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow p-6 text-white">
-                    <h3 className="text-lg font-medium opacity-90">Shares Balance</h3>
-                    <p className="text-3xl font-bold mt-2">{formatCurrency(member.totalShares || 0)}</p>
-                </div>
-                <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow p-6 text-white">
-                    <h3 className="text-lg font-medium opacity-90">Outstanding Loans</h3>
-                    <p className="text-3xl font-bold mt-2">{formatCurrency(member.totalLoans || 0)}</p>
-                </div>
-            </div>
+            {(() => {
+                // Get current live balances from the most recent transaction (first in filtered list)
+                // Note: filteredTransactions is reversed (newest first)
+                const latestTx = filteredTransactions[0];
+                const liveSavings = latestTx?.runningBalances?.savings || 0;
+                const liveShares = latestTx?.runningBalances?.shares || 0;
+                const liveLoans = latestTx?.runningBalances?.loans || 0;
+
+                return (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow p-6 text-white">
+                            <h3 className="text-lg font-medium opacity-90">Savings Balance</h3>
+                            <p className="text-3xl font-bold mt-2">{formatCurrency(liveSavings)}</p>
+                            <p className="text-xs opacity-75 mt-1">Calculated from history</p>
+                        </div>
+                        <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow p-6 text-white">
+                            <h3 className="text-lg font-medium opacity-90">Shares Balance</h3>
+                            <p className="text-3xl font-bold mt-2">{formatCurrency(liveShares)}</p>
+                            <p className="text-xs opacity-75 mt-1">Calculated from history</p>
+                        </div>
+                        <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow p-6 text-white">
+                            <h3 className="text-lg font-medium opacity-90">Outstanding Loans</h3>
+                            <p className="text-3xl font-bold mt-2">{formatCurrency(liveLoans)}</p>
+                            <p className="text-xs opacity-75 mt-1">Calculated from history</p>
+                        </div>
+                    </div>
+                );
+            })()}
 
             {/* Transaction History with Search/Filter/Pagination */}
             <div className="bg-white rounded-lg shadow dark:bg-gray-800">
