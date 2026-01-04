@@ -8,6 +8,7 @@ export async function GET(request: Request) {
     try {
         const { searchParams } = new URL(request.url);
         const secret = searchParams.get('secret');
+        const reset = searchParams.get('reset') === 'true';
 
         if (secret !== process.env.AUTH_SECRET && secret !== 'migration-override') {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -16,6 +17,17 @@ export async function GET(request: Request) {
         console.log('Starting migration via API...');
         const logs: string[] = [];
         const log = (msg: string) => { console.log(msg); logs.push(msg); };
+
+        if (reset) {
+            log('⚠️ RESET MODE: Deleting all existing data...');
+            await prisma.transaction.deleteMany({});
+            await prisma.expense.deleteMany({});
+            await prisma.member.deleteMany({});
+            await prisma.user.deleteMany({});
+            log('✅ Database cleared.');
+        }
+
+        // Statistics
 
         // Statistics
         let usersCreated = 0;

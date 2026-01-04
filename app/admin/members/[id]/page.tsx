@@ -88,8 +88,8 @@ export default function MemberDetailPage() {
         let loans = 0;
 
         const txWithBalances = sortedTx.map(tx => {
-            const principal = tx.amount || 0;
-            const interest = (tx as any).interestAmount || 0;
+            const principal = Number(tx.amount) || 0;
+            const interest = Number((tx as any).interestAmount) || 0;
 
             switch (tx.type) {
                 case 'SAVINGS_DEPOSIT':
