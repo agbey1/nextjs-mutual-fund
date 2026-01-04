@@ -35,6 +35,9 @@ export default async function AdminLayout({
                     <Link href="/admin/expenses" className="block px-4 py-2 text-gray-700 rounded hover:bg-blue-50 hover:text-blue-600 dark:text-gray-300 dark:hover:bg-gray-700">
                         Expenses
                     </Link>
+                    <Link href="/admin/bank-transactions" className="block px-4 py-2 text-gray-700 rounded hover:bg-blue-50 hover:text-blue-600 dark:text-gray-300 dark:hover:bg-gray-700">
+                        Bank Transactions
+                    </Link>
                     <Link href="/admin/loans" className="block px-4 py-2 text-gray-700 rounded hover:bg-blue-50 hover:text-blue-600 dark:text-gray-300 dark:hover:bg-gray-700">
                         Loans
                     </Link>

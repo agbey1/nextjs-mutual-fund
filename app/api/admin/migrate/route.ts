@@ -21,10 +21,13 @@ export async function GET(request: Request) {
 
         if (reset) {
             log('⚠️ RESET MODE: Deleting all existing data...');
+            // Delete children first
+            await prisma.loanRequest.deleteMany({});
             await prisma.transaction.deleteMany({});
             await prisma.expense.deleteMany({});
             await prisma.bankTransaction.deleteMany({});
-            // Delete members and users last due to FKeys
+
+            // Delete parents
             await prisma.member.deleteMany({});
             await prisma.user.deleteMany({});
             log('✅ Database cleared.');
