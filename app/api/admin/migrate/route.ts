@@ -22,12 +22,12 @@ export async function GET(request: Request) {
             log('⚠️ RESET MODE: Deleting all existing data...');
             await prisma.transaction.deleteMany({});
             await prisma.expense.deleteMany({});
+            await prisma.bankTransaction.deleteMany({});
+            // Delete members and users last due to FKeys
             await prisma.member.deleteMany({});
             await prisma.user.deleteMany({});
             log('✅ Database cleared.');
         }
-
-        // Statistics
 
         // Statistics
         let usersCreated = 0;
@@ -39,6 +39,8 @@ export async function GET(request: Request) {
         let txCreated = 0;
         let txSkipped = 0;
         let membersWithNoTx = 0;
+        let expensesCreated = 0;
+        let bankTxCreated = 0;
 
         // Count total expected transactions from mockData
         for (const m of mockMembers) {
@@ -169,7 +171,6 @@ export async function GET(request: Request) {
 
         // 2. Expenses
         log(`Migrating ${mockExpenses.length} expenses...`);
-        let expensesCreated = 0;
         for (const exp of mockExpenses) {
             const existing = await prisma.expense.findUnique({ where: { id: exp.id } });
             if (!existing) {
@@ -186,13 +187,41 @@ export async function GET(request: Request) {
             }
         }
 
+        // 3. Bank Transactions
+        const { mockBankTransactions } = await import('@/lib/bankData');
+        log(`Migrating ${mockBankTransactions.length} bank transactions...`);
+
+        for (const btx of mockBankTransactions) {
+            const existing = await prisma.bankTransaction.findFirst({
+                where: { reference: btx.Id.toString() }
+            });
+
+            if (!existing) {
+                // Excel Date Conversion (25569 offset for Unix epoch from Dec 30 1899)
+                const excelDate = btx.ReceiptDate || btx.Date;
+                const jsDate = new Date((excelDate - 25569) * 86400 * 1000);
+
+                await prisma.bankTransaction.create({
+                    data: {
+                        date: jsDate,
+                        amount: btx.Amount,
+                        type: btx.BankTransactionTypeId === 1 ? 'DEPOSIT' : 'WITHDRAWAL',
+                        description: btx.PaidBy,
+                        reference: btx.Id.toString()
+                    }
+                });
+                bankTxCreated++;
+            }
+        }
+
         // Summary
         const summary = {
             users: { created: usersCreated, skipped: usersSkipped },
             members: { created: membersCreated, skipped: membersSkipped, duplicatePhones: membersWithDuplicatePhone },
             transactions: { expected: totalExpectedTx, created: txCreated, skipped: txSkipped },
             membersWithNoTransactions: membersWithNoTx,
-            expenses: { created: expensesCreated }
+            expenses: { created: expensesCreated },
+            bankTransactions: { created: bankTxCreated }
         };
 
         log(`=== MIGRATION SUMMARY ===`);
@@ -201,6 +230,7 @@ export async function GET(request: Request) {
         log(`Transactions: ${txCreated} created, ${txSkipped} skipped (Expected: ${totalExpectedTx})`);
         log(`Members with NO transactions in mockData: ${membersWithNoTx}`);
         log(`Expenses: ${expensesCreated} created`);
+        log(`Bank Transactions: ${bankTxCreated} created`);
         log('Migration Complete');
 
         return NextResponse.json({ success: true, summary, logs });

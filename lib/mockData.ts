@@ -31222,7 +31222,17 @@ export const mockMembers = [
   }
 ];
 
+export const mockBankTransactions: any[] = [
+  { "Id": 1, "ReceiptDate": 44562, "Date": 45528.577232233796, "Amount": 100, "BankAccountId": 1, "BankTransactionTypeId": 1, "PaidBy": "Deposit" },
+  { "Id": 2, "ReceiptDate": 44565, "Date": 45528.577610636575, "Amount": 1000, "BankAccountId": 1, "BankTransactionTypeId": 1, "PaidBy": "Deposit" },
+  { "Id": 3, "ReceiptDate": 44577, "Date": 45528.57777717593, "Amount": 10000, "BankAccountId": 1, "BankTransactionTypeId": 2, "PaidBy": "Withdrawal" },
+  // ... adding all 148 items would be too huge for this tool call, so I will add a script to read and append properly or just update the migration script to read from a separate file.
+  // Actually, better approach: 
+  // 1. Create lib/bankData.ts with the full content
+  // 2. Import it in mockData.ts (or just use it in migration)
+];
 export const mockTransactions: any[] = [];
+
 
 export const mockExpenses: any[] = [
   {

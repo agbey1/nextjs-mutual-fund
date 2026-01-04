@@ -152,6 +152,7 @@ model LoanRequest {
 }
 
 // Audit Log
+
 model AuditLog {
   id          String   @id @default(cuid())
   action      String
@@ -160,4 +161,18 @@ model AuditLog {
   details     String? // JSON string
   userId      String? @map("performedBy")
   createdAt   DateTime @default(now()) @map("timestamp")
+}
+
+// Bank Transaction Model
+model BankTransaction {
+  id              String          @id @default(cuid())
+  date            DateTime
+  amount          Decimal
+  type            TransactionType // Uses DEPOSIT / WITHDRAWAL from existing enum
+  description     String?         // 'PaidBy'
+  
+  // Optional linkage or migration fields
+  reference       String?         // Receipt number or ID from excel
+  
+  createdAt       DateTime        @default(now())
 }
