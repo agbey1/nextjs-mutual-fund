@@ -45,7 +45,7 @@ export async function GET(req: Request) {
             const headers = Object.keys(exportData[0] || {});
             const csvRows = [
                 headers.join(","),
-                ...exportData.map(row =>
+                ...exportData.map((row: any) =>
                     headers.map(h => `"${String((row as any)[h]).replace(/"/g, '""')}"`).join(",")
                 )
             ];

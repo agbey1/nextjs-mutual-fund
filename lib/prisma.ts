@@ -1,23 +1,17 @@
 
-// import { PrismaClient } from '@prisma/client';
+import { PrismaClient as RealPrismaClient } from '@prisma/client';
 import { mockMembers, mockTransactions, mockExpenses, mockAuditLogs } from './mockData';
-import { hashPassword } from './hash'; // Need for dynamic phone-based passwords
+import { hashPassword } from './hash';
 
-// Extract all transactions from embedded member data
-// const allTransactions: any[] = mockMembers.flatMap((m: any) => m.transactions || []);
-// Helper to get fresh list of all transactions including new ones
+// ... (Mock Data Helpers) ...
 const getAllTransactions = () => {
     const memberTx = mockMembers.flatMap((m: any) => m.transactions || []);
     return [...memberTx, ...mockTransactions];
 };
 
-console.log(`[Prisma Mock] Loaded ${mockMembers.length} members`);
-
-// Pre-computed hash for admin (password: 'admin')
+// ... (Admin Hash & Mock Users) ...
 const ADMIN_HASH = '7577157acda183b837bfb540f4313995:4b3357685e15df3774f05f77448f21e72d38b16ff0e211053b41779cf0f99165e819585766bb97e3425268748561309d562e8950f0533bfb7a37d6a04a6676d7';
 
-// Initial Mock Users - phone number as password
-// Note: We generate hashes once at startup for mock members
 const mockUsers = [
     { id: 'mock-admin-id', username: 'admin', name: 'Admin', role: 'ADMIN', password: ADMIN_HASH },
     ...mockMembers.map((m: any) => ({
@@ -30,8 +24,9 @@ const mockUsers = [
     }))
 ] as any[];
 
-const PrismaClient = class {
-    constructor() { }
+// Mock Implementation
+const MockPrismaClient = class {
+    constructor() { console.log("[Prisma] Using MOCK Client"); }
 
     // Static storage for ephemeral data
     static loanRequests: any[] = [];
@@ -295,7 +290,7 @@ const PrismaClient = class {
 
     loanRequest = {
         findMany: async (args: any) => {
-            let result = [...PrismaClient.loanRequests];
+            let result = [...MockPrismaClient.loanRequests];
 
             if (args?.where?.memberId) {
                 result = result.filter((l: any) => l.memberId === args.where.memberId);
@@ -318,7 +313,7 @@ const PrismaClient = class {
             return result;
         },
         findUnique: async (args: any) => {
-            const loan = PrismaClient.loanRequests.find((l: any) => l.id === args?.where?.id);
+            const loan = MockPrismaClient.loanRequests.find((l: any) => l.id === args?.where?.id);
             if (!loan) return null;
 
             if (args?.include?.member) {
@@ -340,21 +335,21 @@ const PrismaClient = class {
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()
             };
-            PrismaClient.loanRequests.push(newLoan);
+            MockPrismaClient.loanRequests.push(newLoan);
             return newLoan;
         },
         update: async (args: any) => {
-            const index = PrismaClient.loanRequests.findIndex((l: any) => l.id === args.where.id);
+            const index = MockPrismaClient.loanRequests.findIndex((l: any) => l.id === args.where.id);
             if (index === -1) throw new Error("Loan request not found");
-            PrismaClient.loanRequests[index] = {
-                ...PrismaClient.loanRequests[index],
+            MockPrismaClient.loanRequests[index] = {
+                ...MockPrismaClient.loanRequests[index],
                 ...args.data,
                 updatedAt: new Date().toISOString()
             };
-            return PrismaClient.loanRequests[index];
+            return MockPrismaClient.loanRequests[index];
         },
         count: async (args: any) => {
-            let result = [...PrismaClient.loanRequests];
+            let result = [...MockPrismaClient.loanRequests];
             if (args?.where?.status) {
                 result = result.filter((l: any) => l.status === args.where.status);
             }
@@ -364,7 +359,7 @@ const PrismaClient = class {
 
     dividendDistribution = {
         findMany: async (args?: any) => {
-            let result = [...PrismaClient.dividendDistributions];
+            let result = [...MockPrismaClient.dividendDistributions];
             result.sort((a: any, b: any) => new Date(b.distributedAt).getTime() - new Date(a.distributedAt).getTime());
             return result;
         },
@@ -374,11 +369,11 @@ const PrismaClient = class {
                 ...args.data,
                 distributedAt: new Date().toISOString()
             };
-            PrismaClient.dividendDistributions.push(newDist);
+            MockPrismaClient.dividendDistributions.push(newDist);
             return newDist;
         },
         findUnique: async (args: any) => {
-            return PrismaClient.dividendDistributions.find((d: any) => d.id === args?.where?.id) || null;
+            return MockPrismaClient.dividendDistributions.find((d: any) => d.id === args?.where?.id) || null;
         }
     };
 
@@ -387,5 +382,16 @@ const PrismaClient = class {
     };
 };
 
-const prisma = new PrismaClient();
+let prisma: any;
+
+if (process.env.NODE_ENV === 'production') {
+    prisma = new RealPrismaClient();
+} else {
+    // In dev, use Mock
+    if (!(global as any).prisma) {
+        (global as any).prisma = new MockPrismaClient();
+    }
+    prisma = (global as any).prisma;
+}
+
 export default prisma;

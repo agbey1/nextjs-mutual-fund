@@ -1,1 +1,1 @@
-app/api/transactions/reverse/route.ts(15,53): error TS2339: Property 'findUnique' does not exist on type '{ findMany: (args: any) => Promise<any[]>; count: (args: any) => Promise<number>; aggregate: (args: any) => Promise<{ _sum: { amount: any; interestAmount: any; }; }>; create: (args: any) => Promise<...>; update: (args: any) => Promise<...>; }'.
+app/api/reports/transactions-export/route.ts(48,35): error TS7006: Parameter 'row' implicitly has an 'any' type.
