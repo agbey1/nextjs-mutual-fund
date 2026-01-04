@@ -15,8 +15,7 @@ export async function GET(request: Request) {
 
         const transactions = await prisma.bankTransaction.findMany({
             orderBy: { date: 'desc' },
-            take: limit,
-            include: { member: { select: { firstName: true, lastName: true, accountNumber: true } } }
+            take: limit
         });
 
         return NextResponse.json(transactions);
@@ -44,8 +43,7 @@ export async function POST(request: Request) {
                 description,
                 type,
                 date: new Date(date),
-                reference,
-                isLinked: isLinked || false
+                reference
             }
         });
 

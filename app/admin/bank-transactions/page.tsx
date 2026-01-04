@@ -10,12 +10,6 @@ type BankTransaction = {
     date: string;
     type: "DEPOSIT" | "WITHDRAWAL";
     reference?: string;
-    isLinked: boolean;
-    member?: {
-        firstName: string;
-        lastName: string;
-        accountNumber: string;
-    }
 };
 
 export default function BankTransactionsPage() {
@@ -62,7 +56,7 @@ export default function BankTransactionsPage() {
     };
 
     const handleDelete = async (id: string) => {
-        if (!confirm("Are you sure you want to delete this transaction? This will NOT delete linked member transactions automatically.")) return;
+        if (!confirm("Are you sure you want to delete this transaction?")) return;
         try {
             await fetch(`/api/admin/bank-transactions?id=${id}`, { method: "DELETE" });
             fetchTransactions();
@@ -120,7 +114,7 @@ export default function BankTransactionsPage() {
                     onClick={() => { closeModal(); setIsModalOpen(true); }}
                     className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                 >
-                    + Record Bank Deposit
+                    + Record Bank Transaction
                 </button>
             </div>
 
@@ -133,14 +127,13 @@ export default function BankTransactionsPage() {
                             <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Description / Payer</th>
                             <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Type</th>
                             <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Ref</th>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Linked Member</th>
                             <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Amount</th>
                             <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Actions</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
                         {loading ? (
-                            <tr><td colSpan={7} className="p-4 text-center">Loading...</td></tr>
+                            <tr><td colSpan={6} className="p-4 text-center">Loading...</td></tr>
                         ) : transactions.map((tx) => (
                             <tr key={tx.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                                 <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -157,15 +150,6 @@ export default function BankTransactionsPage() {
                                 </td>
                                 <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 font-mono text-xs">
                                     {tx.reference}
-                                </td>
-                                <td className="px-6 py-4 text-sm">
-                                    {tx.isLinked && tx.member ? (
-                                        <span className="text-blue-600 hover:underline cursor-pointer" title={tx.member.accountNumber}>
-                                            {tx.member.firstName} {tx.member.lastName}
-                                        </span>
-                                    ) : (
-                                        <span className="text-gray-400 italic">Unlinked</span>
-                                    )}
                                 </td>
                                 <td className={`px-6 py-4 text-sm font-bold ${tx.type === 'DEPOSIT' ? 'text-green-600' : 'text-red-600'
                                     }`}>

@@ -194,20 +194,9 @@ export async function GET(request: Request) {
             }
         }
 
-        // 3. Bank Transactions
+        // 3. Bank Transactions (Standalone - NO LINKING)
         const { mockBankTransactions } = await import('@/lib/bankData');
-        log(`Migrating ${mockBankTransactions.length} bank transactions...`);
-
-        // Helper to normalize names for matching
-        const cleanName = (name: string) => name?.toLowerCase().replace(/[^a-z0-9]/g, '');
-
-        // Pre-build member lookup map (Name -> Member ID)
-        const memberMap = new Map<string, any>();
-        for (const m of allMembers) {
-            const fullName = `${m.firstName} ${m.lastName}`;
-            memberMap.set(cleanName(fullName), m);
-            memberMap.set(cleanName(m.lastName + m.firstName), m); // reverse check
-        }
+        log(`Migrating ${mockBankTransactions.length} bank transactions (Standalone)...`);
 
         for (const btx of mockBankTransactions) {
             const existing = await prisma.bankTransaction.findFirst({
@@ -219,76 +208,16 @@ export async function GET(request: Request) {
                 const excelDate = btx.ReceiptDate || btx.Date;
                 const jsDate = new Date((excelDate - 25569) * 86400 * 1000);
 
-                // Attempt to find member
-                let matchedMember = null;
-                const payer = btx.PaidBy ? cleanName(btx.PaidBy) : '';
-
-                if (payer) {
-                    // Special overrides
-                    if (payer.includes('sisroselyn') || payer === 'roselyn') {
-                        // Find by account number for robustness
-                        matchedMember = allMembers.find(m => m.accountNumber === '1000061');
-                    } else {
-                        // Fuzzy / Exact match attempts
-                        matchedMember = memberMap.get(payer);
-
-                        // Fallback: Check if PaidBy contains Last Name of any member
-                        if (!matchedMember) {
-                            matchedMember = allMembers.find(m =>
-                                payer.includes(cleanName(m.lastName)) &&
-                                payer.includes(cleanName(m.firstName))
-                            );
-                        }
-                    }
-                }
-
-                // Get real DB ID if we found a mock member
-                let dbMemberId = null;
-                if (matchedMember) {
-                    const dbMember = await prisma.member.findUnique({ where: { accountNumber: matchedMember.accountNumber } });
-                    dbMemberId = dbMember?.id;
-                }
-
-                // Create Bank Transaction
                 await prisma.bankTransaction.create({
                     data: {
                         date: jsDate,
                         amount: btx.Amount,
                         type: btx.BankTransactionTypeId === 1 ? 'DEPOSIT' : 'WITHDRAWAL',
-                        description: btx.PaidBy,
-                        reference: btx.Id.toString(),
-                        memberId: dbMemberId,
-                        isLinked: !!dbMemberId
+                        description: btx.PaidBy, // Just text description
+                        reference: btx.Id.toString()
                     }
                 });
                 bankTxCreated++;
-
-                // IF Matched and it's a DEPOSIT (Type 1), credit the member's Savings
-                if (dbMemberId && btx.BankTransactionTypeId === 1) {
-                    // Check if this transaction already exists to avoid duplicates
-                    // We use the Bank Transaction ID as part of the receipt number to track it
-                    const bankReceiptRef = `BANK-${btx.Id}`;
-
-                    const existingTx = await prisma.transaction.findFirst({
-                        where: { receiptNumber: bankReceiptRef }
-                    });
-
-                    if (!existingTx) {
-                        await prisma.transaction.create({
-                            data: {
-                                memberId: dbMemberId,
-                                type: 'SAVINGS_DEPOSIT',
-                                amount: btx.Amount,
-                                date: jsDate,
-                                description: `Bank Deposit: ${btx.PaidBy}`,
-                                receiptNumber: bankReceiptRef,
-                                isReversal: false,
-                                paymentMethod: 'BANK_TRANSFER'
-                            }
-                        });
-                        log(`Linked Bank TX ${btx.Id} (${btx.Amount}) to Member ${matchedMember?.firstName} ${matchedMember?.lastName}`);
-                    }
-                }
             }
         }
 
