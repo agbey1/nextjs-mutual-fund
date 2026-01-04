@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node .next/standalone/server.js",
+    "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate",
     "migrate:prod": "npx dotenv-cli -e .env.production -- npx prisma db push --schema=prisma/schema.postgres.prisma && npx dotenv-cli -e .env.production -- npx ts-node scripts/migrate_mock_to_postgres.ts"
