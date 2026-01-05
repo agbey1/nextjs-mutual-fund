@@ -97,7 +97,7 @@ export async function POST(req: Request) {
                     interestAmount: interest,
                     principalAmount: principalAmount ? parseFloat(principalAmount) : 0,
                     date: date ? new Date(date) : new Date(), // Manual date or now
-                    recordedBy: session?.user?.id!
+                    recordedBy: session?.user?.id
                 }
             });
 
@@ -161,8 +161,8 @@ export async function POST(req: Request) {
         }
 
         return NextResponse.json(result.transaction);
-    } catch (e) {
-        console.error(e);
-        return new NextResponse("Error recording transaction", { status: 500 });
+    } catch (e: any) {
+        console.error("Create Transaction Error:", e);
+        return NextResponse.json({ error: "Error recording transaction", details: e?.message || "Unknown error" }, { status: 500 });
     }
 }
