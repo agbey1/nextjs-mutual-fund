@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 type BankTransaction = {
     id: string;
@@ -16,6 +16,14 @@ type BankTransaction = {
 export default function BankTransactionsPage() {
     const [transactions, setTransactions] = useState<BankTransaction[]>([]);
     const [loading, setLoading] = useState(false);
+
+    // Search & Filter State
+    const [search, setSearch] = useState("");
+    const [typeFilter, setTypeFilter] = useState<"ALL" | "DEPOSIT" | "WITHDRAWAL">("ALL");
+
+    // Pagination State
+    const [page, setPage] = useState(1);
+    const perPage = 15;
 
     // Modal State
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,6 +40,11 @@ export default function BankTransactionsPage() {
         fetchTransactions();
     }, []);
 
+    // Reset page when filters change
+    useEffect(() => {
+        setPage(1);
+    }, [search, typeFilter]);
+
     const fetchTransactions = () => {
         setLoading(true);
         fetch("/api/admin/bank-transactions")
@@ -45,6 +58,20 @@ export default function BankTransactionsPage() {
                 setLoading(false);
             });
     };
+
+    // Filtered and paginated transactions
+    const filteredTransactions = useMemo(() => {
+        return transactions.filter(tx => {
+            const matchesSearch = search === "" ||
+                tx.description?.toLowerCase().includes(search.toLowerCase()) ||
+                tx.reference?.toLowerCase().includes(search.toLowerCase());
+            const matchesType = typeFilter === "ALL" || tx.type === typeFilter;
+            return matchesSearch && matchesType;
+        });
+    }, [transactions, search, typeFilter]);
+
+    const totalPages = Math.ceil(filteredTransactions.length / perPage);
+    const paginatedTransactions = filteredTransactions.slice((page - 1) * perPage, page * perPage);
 
     const handleEdit = (tx: BankTransaction) => {
         setEditing(tx);
@@ -119,6 +146,34 @@ export default function BankTransactionsPage() {
                 </button>
             </div>
 
+            {/* Search & Filters */}
+            <div className="flex flex-wrap gap-4 items-center bg-white p-4 rounded-lg shadow dark:bg-gray-800">
+                <div className="flex-1 min-w-[200px]">
+                    <input
+                        type="text"
+                        placeholder="Search by description or reference..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="w-full border p-2 rounded text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    />
+                </div>
+                <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-gray-500 dark:text-gray-300">Type:</span>
+                    <select
+                        value={typeFilter}
+                        onChange={(e) => setTypeFilter(e.target.value as any)}
+                        className="border p-2 rounded text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    >
+                        <option value="ALL">All</option>
+                        <option value="DEPOSIT">Deposit</option>
+                        <option value="WITHDRAWAL">Withdrawal</option>
+                    </select>
+                </div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">
+                    Showing {paginatedTransactions.length} of {filteredTransactions.length} records
+                </div>
+            </div>
+
             {/* Table */}
             <div className="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
                 <table className="w-full text-left">
@@ -136,7 +191,9 @@ export default function BankTransactionsPage() {
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
                         {loading ? (
                             <tr><td colSpan={7} className="p-4 text-center">Loading...</td></tr>
-                        ) : transactions.map((tx) => (
+                        ) : paginatedTransactions.length === 0 ? (
+                            <tr><td colSpan={7} className="p-8 text-center text-gray-500">No transactions found</td></tr>
+                        ) : paginatedTransactions.map((tx) => (
                             <tr key={tx.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
                                 <td className="px-6 py-4 text-sm text-gray-900 font-medium dark:text-white">
                                     {new Date(tx.date).toLocaleDateString()}
@@ -169,6 +226,44 @@ export default function BankTransactionsPage() {
                     </tbody>
                 </table>
             </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+                <div className="flex items-center justify-between bg-white dark:bg-gray-800 px-4 py-3 rounded-lg shadow">
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                        Page {page} of {totalPages}
+                    </div>
+                    <div className="flex gap-2">
+                        <button
+                            onClick={() => setPage(Math.max(1, page - 1))}
+                            disabled={page === 1}
+                            className="px-3 py-1 border rounded text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-600"
+                        >
+                            Previous
+                        </button>
+                        {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                            const pageNum = page <= 3 ? i + 1 : page - 2 + i;
+                            if (pageNum > totalPages) return null;
+                            return (
+                                <button
+                                    key={pageNum}
+                                    onClick={() => setPage(pageNum)}
+                                    className={`px-3 py-1 border rounded text-sm ${page === pageNum ? 'bg-blue-600 text-white border-blue-600' : 'hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-600'}`}
+                                >
+                                    {pageNum}
+                                </button>
+                            );
+                        })}
+                        <button
+                            onClick={() => setPage(Math.min(totalPages, page + 1))}
+                            disabled={page === totalPages}
+                            className="px-3 py-1 border rounded text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-600"
+                        >
+                            Next
+                        </button>
+                    </div>
+                </div>
+            )}
 
             {/* Modal */}
             {isModalOpen && (
@@ -234,3 +329,4 @@ export default function BankTransactionsPage() {
         </div>
     );
 }
+
