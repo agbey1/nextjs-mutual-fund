@@ -7,35 +7,57 @@ export function DateFilter() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
-    const [date, setDate] = useState(searchParams.get("date") || "");
+    const [startDate, setStartDate] = useState(searchParams.get("startDate") || "");
+    const [endDate, setEndDate] = useState(searchParams.get("endDate") || "");
 
-    const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newDate = e.target.value;
-        setDate(newDate);
+    const applyFilter = () => {
         const params = new URLSearchParams(searchParams);
-        if (newDate) {
-            params.set("date", newDate);
+        if (startDate) {
+            params.set("startDate", startDate);
         } else {
-            params.delete("date");
+            params.delete("startDate");
+        }
+        if (endDate) {
+            params.set("endDate", endDate);
+        } else {
+            params.delete("endDate");
         }
         router.replace(`${pathname}?${params.toString()}`);
     };
 
+    const clearFilter = () => {
+        setStartDate("");
+        setEndDate("");
+        router.replace(pathname);
+    };
+
     return (
-        <div className="flex items-center gap-2 bg-white dark:bg-gray-800 p-2 rounded shadow">
-            <span className="text-sm font-medium text-gray-500">Balances As Of:</span>
+        <div className="flex flex-wrap items-center gap-2 bg-white dark:bg-gray-800 p-3 rounded shadow">
+            <span className="text-sm font-medium text-gray-500">Filter Period:</span>
             <input
                 type="date"
-                value={date}
-                onChange={handleDateChange}
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
                 className="border p-1 rounded text-sm dark:bg-gray-700 dark:text-white"
+                placeholder="Start Date"
             />
-            {date && (
+            <span className="text-gray-400">to</span>
+            <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="border p-1 rounded text-sm dark:bg-gray-700 dark:text-white"
+                placeholder="End Date"
+            />
+            <button
+                onClick={applyFilter}
+                className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
+            >
+                Apply
+            </button>
+            {(startDate || endDate) && (
                 <button
-                    onClick={() => {
-                        setDate("");
-                        router.replace(pathname);
-                    }}
+                    onClick={clearFilter}
                     className="text-xs text-red-500 hover:text-red-700 font-medium"
                 >
                     Clear
