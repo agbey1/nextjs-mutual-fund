@@ -86,6 +86,7 @@ model Member {
   totalSavings  Decimal   @default(0) 
   totalLoans    Decimal   @default(0) 
   totalShares   Decimal   @default(0)
+  registrationFee Decimal @default(0)
   
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt

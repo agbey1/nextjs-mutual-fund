@@ -20,7 +20,8 @@ export default async function AdminDashboard({ searchParams }: { searchParams: P
         loanDisbursalTx,
         loanRepaymentTx,
         expensesData,
-        memberCount
+        memberCount,
+        registrationFeesData
     ] = await Promise.all([
         prisma.transaction.aggregate({ _sum: { amount: true }, where: { type: { in: ["DEPOSIT", "SAVINGS_DEPOSIT"] }, date: dateFilter } }),
         prisma.transaction.aggregate({ _sum: { amount: true }, where: { type: { in: ["WITHDRAWAL", "SAVINGS_WITHDRAWAL"] }, date: dateFilter } }),
@@ -29,8 +30,11 @@ export default async function AdminDashboard({ searchParams }: { searchParams: P
         prisma.transaction.aggregate({ _sum: { amount: true }, where: { type: "LOAN_DISBURSAL", date: dateFilter } }),
         prisma.transaction.aggregate({ _sum: { amount: true, interestAmount: true }, where: { type: "LOAN_REPAYMENT", date: dateFilter } }),
         prisma.expense.aggregate({ _sum: { amount: true }, where: { date: dateFilter } }),
-        prisma.member.count() // Member count is always total or should it be filtered by registration date? Simple count is fine for now.
+        prisma.member.count(),
+        prisma.member.aggregate({ _sum: { registrationFee: true } })
     ]);
+
+    const totalRegistrationFees = registrationFeesData._sum.registrationFee || 0;
 
     // Calculate Net Balances
     const totalSavings = (savingsTx._sum.amount || 0) - (withdrawalTx._sum.amount || 0);
@@ -69,11 +73,12 @@ export default async function AdminDashboard({ searchParams }: { searchParams: P
             </div>
 
             {/* Metrics Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                 <MetricCard title="Total Savings" value={totalSavings} />
                 <MetricCard title="Total Shares" value={totalShares} color="text-indigo-600" />
                 <MetricCard title="Active Loans" value={activeLoans} color="text-red-500" />
                 <MetricCard title="Total Expenses" value={expenses} color="text-orange-500" />
+                <MetricCard title="Registration Fees" value={Number(totalRegistrationFees)} color="text-green-600" />
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">

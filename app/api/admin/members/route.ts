@@ -28,7 +28,7 @@ export async function POST(req: Request) {
 
     try {
         const body = await req.json();
-        const { firstName, lastName, gender, dob, phone, email, address, gps, accountNumber, beneficiaryName, beneficiaryRelationship, beneficiaryAddress } = body;
+        const { firstName, lastName, gender, dob, phone, email, address, gps, accountNumber, beneficiaryName, beneficiaryRelationship, beneficiaryAddress, registrationFee } = body;
 
         const result = await prisma.$transaction(async (tx: any) => {
             // Create User
@@ -57,7 +57,8 @@ export async function POST(req: Request) {
                     accountNumber,
                     beneficiaryName,
                     beneficiaryRelationship,
-                    beneficiaryAddress
+                    beneficiaryAddress,
+                    registrationFee: registrationFee ? parseFloat(registrationFee) : 0
                 }
             });
 
