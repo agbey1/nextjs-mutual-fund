@@ -82,3 +82,58 @@ export async function POST(req: Request) {
         return new NextResponse("Error creating member", { status: 500 });
     }
 }
+
+export async function PUT(req: Request) {
+    const session = await auth();
+    if (session?.user?.role !== "ADMIN") return new NextResponse("Unauthorized", { status: 401 });
+
+    try {
+        const body = await req.json();
+        const { id, firstName, lastName, gender, dob, phone, email, address, gps, beneficiaryName, beneficiaryRelationship, beneficiaryAddress, registrationFee } = body;
+
+        if (!id) return new NextResponse("Member ID required", { status: 400 });
+
+        const updated = await prisma.member.update({
+            where: { id },
+            data: {
+                firstName,
+                lastName,
+                gender,
+                dateOfBirth: dob ? new Date(dob) : undefined,
+                phone,
+                email,
+                address,
+                gps,
+                beneficiaryName,
+                beneficiaryRelationship,
+                beneficiaryAddress,
+                registrationFee: registrationFee ? parseFloat(registrationFee) : undefined
+            }
+        });
+
+        // Also update User name if firstName/lastName changed
+        if (updated.userId) {
+            await prisma.user.update({
+                where: { id: updated.userId },
+                data: { name: `${firstName} ${lastName}` }
+            });
+        }
+
+        // Log Audit
+        try {
+            await logAction(
+                "UPDATE_MEMBER",
+                "MEMBER",
+                id,
+                { firstName, lastName, updatedBy: session?.user?.id }
+            );
+        } catch (error) {
+            console.error("Audit log failed for member update", error);
+        }
+
+        return NextResponse.json(updated);
+    } catch (error) {
+        console.error(error);
+        return new NextResponse("Error updating member", { status: 500 });
+    }
+}

@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { EditTransactionModal, ReverseTransactionModal } from '@/components/admin/TransactionModals';
+import { EditMemberModal } from '@/components/admin/EditMemberModal';
 
 interface Transaction {
     id: string;
@@ -50,6 +51,7 @@ export default function MemberDetailPage() {
     const [editModalOpen, setEditModalOpen] = useState(false);
     const [reverseModalOpen, setReverseModalOpen] = useState(false);
     const [selectedTx, setSelectedTx] = useState<Transaction | null>(null);
+    const [editMemberModalOpen, setEditMemberModalOpen] = useState(false);
 
     // Transaction filters
     const [txSearch, setTxSearch] = useState('');
@@ -298,6 +300,12 @@ export default function MemberDetailPage() {
                     >
                         Reset Password
                     </button>
+                    <button
+                        onClick={() => setEditMemberModalOpen(true)}
+                        className="px-3 py-1 text-sm bg-green-100 text-green-800 rounded hover:bg-green-200 border border-green-200"
+                    >
+                        Edit Member
+                    </button>
                 </div>
             </div>
 
@@ -522,6 +530,12 @@ export default function MemberDetailPage() {
                 onClose={() => setReverseModalOpen(false)}
                 transaction={selectedTx}
                 onConfirm={handleConfirmReverse}
+            />
+            <EditMemberModal
+                isOpen={editMemberModalOpen}
+                onClose={() => setEditMemberModalOpen(false)}
+                member={member}
+                onSave={() => setRefreshKey(prev => prev + 1)}
             />
         </div >
     );

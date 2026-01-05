@@ -39,42 +39,45 @@ export default function LoginPage() {
 
     return (
         <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-            {/* Animated Gradient Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 animate-gradient-shift"></div>
+            {/* Soft Gradient Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-purple-50 to-indigo-100"></div>
 
-            {/* Floating Orbs */}
-            <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/30 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-            <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl animate-bounce-slow"></div>
+            {/* Subtle Pattern Overlay */}
+            <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(99,102,241,0.15) 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+
+            {/* Floating Orbs - Softer */}
+            <div className="absolute top-20 left-20 w-72 h-72 bg-blue-300/40 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-300/30 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-indigo-300/30 rounded-full blur-3xl"></div>
 
             {/* Login Card */}
             <div className="relative z-10 w-full max-w-md mx-4">
                 {/* Glassmorphism Card */}
-                <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-8 space-y-8">
+                <div className="backdrop-blur-xl bg-white/60 border border-white/40 rounded-3xl shadow-2xl p-8 space-y-8">
                     {/* Logo & Header */}
                     <div className="text-center space-y-3">
-                        <div className="mx-auto w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform">
+                        <div className="mx-auto w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform">
                             <span className="text-white text-3xl font-bold">CIC</span>
                         </div>
-                        <h1 className="text-3xl font-bold text-white tracking-tight">
+                        <h1 className="text-3xl font-bold text-gray-800 tracking-tight">
                             Calvary Impact Chapel
                         </h1>
-                        <p className="text-blue-200/80 text-sm font-medium">
+                        <p className="text-purple-600 text-sm font-medium">
                             Mutual Fund Management System
                         </p>
                     </div>
 
                     {/* Error Message */}
                     {error && (
-                        <div className="p-4 bg-red-500/20 border border-red-400/30 rounded-xl backdrop-blur-sm">
-                            <p className="text-red-200 text-sm text-center font-medium">{error}</p>
+                        <div className="p-4 bg-red-100 border border-red-300 rounded-xl">
+                            <p className="text-red-700 text-sm text-center font-medium">{error}</p>
                         </div>
                     )}
 
                     {/* Login Form */}
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-2">
-                            <label className="block text-sm font-medium text-blue-100">
+                            <label className="block text-sm font-medium text-gray-700">
                                 Account Number / Phone
                             </label>
                             <div className="relative">
@@ -82,12 +85,12 @@ export default function LoginPage() {
                                     type="text"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
-                                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-200/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-transparent transition-all backdrop-blur-sm"
+                                    className="w-full px-4 py-3 bg-white/80 border border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
                                     placeholder="Enter your ID"
                                     required
                                 />
                                 <div className="absolute inset-y-0 right-4 flex items-center">
-                                    <svg className="w-5 h-5 text-blue-300/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
                                 </div>
@@ -95,7 +98,7 @@ export default function LoginPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <label className="block text-sm font-medium text-blue-100">
+                            <label className="block text-sm font-medium text-gray-700">
                                 Password
                             </label>
                             <div className="relative">
@@ -103,12 +106,12 @@ export default function LoginPage() {
                                     type="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-blue-200/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-transparent transition-all backdrop-blur-sm"
+                                    className="w-full px-4 py-3 bg-white/80 border border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
                                     placeholder="••••••••"
                                     required
                                 />
                                 <div className="absolute inset-y-0 right-4 flex items-center">
-                                    <svg className="w-5 h-5 text-blue-300/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                     </svg>
                                 </div>
@@ -136,7 +139,7 @@ export default function LoginPage() {
 
                     {/* Footer */}
                     <div className="text-center">
-                        <p className="text-blue-200/60 text-xs">
+                        <p className="text-gray-500 text-xs">
                             Secure access to your financial dashboard
                         </p>
                     </div>
