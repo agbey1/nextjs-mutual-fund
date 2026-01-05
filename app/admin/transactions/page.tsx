@@ -17,6 +17,10 @@ export default function TransactionPage() {
     const [searchQuery, setSearchQuery] = useState("");
     const [showSuggestions, setShowSuggestions] = useState(false);
 
+    // Loan Interest State
+    const [interestMode, setInterestMode] = useState<'PERCENTAGE' | 'FIXED'>('PERCENTAGE');
+    const [interestValue, setInterestValue] = useState("");
+
     const [formData, setFormData] = useState({
         memberId: "",
         type: "DEPOSIT",
@@ -24,7 +28,8 @@ export default function TransactionPage() {
         interestAmount: "0",
         principalAmount: "",
         description: "",
-        reference: ""
+        reference: "",
+        date: new Date().toISOString().split('T')[0] // Default to today
     });
 
     useEffect(() => {
@@ -89,8 +94,10 @@ export default function TransactionPage() {
                 interestAmount: "0",
                 principalAmount: "",
                 description: "",
-                reference: ""
+                reference: "",
+                date: new Date().toISOString().split('T')[0]
             });
+            setInterestValue("");
             setSearchQuery("");
         } catch (err: any) {
             setError(err.message);
@@ -180,6 +187,18 @@ export default function TransactionPage() {
                 </div>
 
                 <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Transaction Date (Manual)</label>
+                    <input
+                        type="date"
+                        name="date"
+                        value={formData.date}
+                        onChange={handleChange}
+                        className="w-full mt-1 p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        required
+                    />
+                </div>
+
+                <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Total Amount</label>
                     <input
                         type="number"
@@ -191,6 +210,75 @@ export default function TransactionPage() {
                         required
                     />
                 </div>
+
+                {/* LOAN DISBURSAL INTEREST LOGIC */}
+                {formData.type === "LOAN_DISBURSAL" && (
+                    <div className="p-4 bg-blue-50 rounded dark:bg-blue-900 border dark:border-blue-700 space-y-3">
+                        <h4 className="text-sm font-bold text-blue-800 dark:text-blue-200">Loan Interest Calculation</h4>
+
+                        <div className="flex gap-4">
+                            <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                                <input
+                                    type="radio"
+                                    name="interestMode"
+                                    checked={interestMode === 'PERCENTAGE'}
+                                    onChange={() => setInterestMode('PERCENTAGE')}
+                                    className="focus:ring-blue-500"
+                                />
+                                Percentage (%)
+                            </label>
+                            <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                                <input
+                                    type="radio"
+                                    name="interestMode"
+                                    checked={interestMode === 'FIXED'}
+                                    onChange={() => setInterestMode('FIXED')}
+                                    className="focus:ring-blue-500"
+                                />
+                                Fixed Amount (GH₵)
+                            </label>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
+                                    {interestMode === 'PERCENTAGE' ? 'Interest Rate (%)' : 'Interest Amount (GH₵)'}
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    value={interestValue}
+                                    onChange={(e) => {
+                                        setInterestValue(e.target.value);
+                                        // Auto-calculate logic handled in effect or submit, but let's do real-time for UX
+                                        if (interestMode === 'PERCENTAGE' && formData.amount) {
+                                            const rate = parseFloat(e.target.value) || 0;
+                                            const principal = parseFloat(formData.amount) || 0;
+                                            const calculated = (principal * rate) / 100;
+                                            setFormData(prev => ({ ...prev, interestAmount: calculated.toFixed(2) }));
+                                        } else if (interestMode === 'FIXED') {
+                                            setFormData(prev => ({ ...prev, interestAmount: e.target.value }));
+                                        }
+                                    }}
+                                    className="w-full mt-1 p-2 border rounded text-sm dark:bg-gray-700 dark:text-white"
+                                    placeholder={interestMode === 'PERCENTAGE' ? 'e.g. 10' : 'e.g. 500'}
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">Calculated Interest</label>
+                                <input
+                                    type="number"
+                                    value={formData.interestAmount}
+                                    readOnly
+                                    className="w-full mt-1 p-2 border rounded text-sm bg-gray-100 text-gray-500 dark:bg-gray-600 dark:text-gray-300 cursor-not-allowed"
+                                />
+                            </div>
+                        </div>
+                        <p className="text-xs text-blue-600 dark:text-blue-300">
+                            Total Outstanding Loan will increase by: GH₵ {(parseFloat(formData.amount || "0") + parseFloat(formData.interestAmount || "0")).toLocaleString()}
+                        </p>
+                    </div>
+                )}
 
                 {isLoanRepayment && (
                     <div className="p-4 bg-yellow-50 rounded dark:bg-yellow-900 border dark:border-yellow-700">

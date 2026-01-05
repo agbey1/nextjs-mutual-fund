@@ -8,6 +8,7 @@ type BankTransaction = {
     amount: number;
     description: string;
     date: string;
+    createdAt: string;
     type: "DEPOSIT" | "WITHDRAWAL";
     reference?: string;
 };
@@ -123,7 +124,8 @@ export default function BankTransactionsPage() {
                 <table className="w-full text-left">
                     <thead className="bg-gray-50 dark:bg-gray-700">
                         <tr>
-                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Date</th>
+                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Transaction Date</th>
+                            <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Entry Date (System)</th>
                             <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Description / Payer</th>
                             <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Type</th>
                             <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-gray-300">Ref</th>
@@ -133,11 +135,14 @@ export default function BankTransactionsPage() {
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
                         {loading ? (
-                            <tr><td colSpan={6} className="p-4 text-center">Loading...</td></tr>
+                            <tr><td colSpan={7} className="p-4 text-center">Loading...</td></tr>
                         ) : transactions.map((tx) => (
                             <tr key={tx.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                <td className="px-6 py-4 text-sm text-gray-900 font-medium dark:text-white">
                                     {new Date(tx.date).toLocaleDateString()}
+                                </td>
+                                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                                    {new Date(tx.createdAt).toLocaleString()}
                                 </td>
                                 <td className="px-6 py-4 text-sm text-gray-900 font-medium dark:text-white">
                                     {tx.description}

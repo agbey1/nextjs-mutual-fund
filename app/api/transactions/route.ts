@@ -54,10 +54,12 @@ export async function POST(req: Request) {
 
     try {
         const body = await req.json();
-        const { memberId, type, amount, reference, description, interestAmount, principalAmount } = body;
+        const { memberId, type, amount, reference, description, interestAmount, principalAmount, date } = body;
 
         const val = parseFloat(amount);
         if (isNaN(val) || val <= 0) return new NextResponse("Invalid amount", { status: 400 });
+
+        // ... validation logic ...
 
         // Fetch current member state for validation
         const member = await prisma.member.findUnique({
@@ -76,15 +78,15 @@ export async function POST(req: Request) {
                 return new NextResponse(`Insufficient Shares Balance. Current: ${member.totalShares}`, { status: 400 });
             }
         } else if (type === "LOAN_REPAYMENT") {
-            // Logic: Cannot pay more than outstanding loan? 
-            // Usually we allow overpayment but for now let's strict check against Principal
-            // Member totalLoans tracks principal outstanding generally.
+            // ... existing checks ...
             if (member.totalLoans < (parseFloat(principalAmount) || 0)) {
                 return new NextResponse(`Repayment principal exceeds outstanding loan. Current: ${member.totalLoans}`, { status: 400 });
             }
         }
 
         const result = await prisma.$transaction(async (prismaTx: any) => {
+            const interest = interestAmount ? parseFloat(interestAmount) : 0;
+
             const tx = await prismaTx.transaction.create({
                 data: {
                     memberId,
@@ -92,8 +94,9 @@ export async function POST(req: Request) {
                     amount: val,
                     reference,
                     description,
-                    interestAmount: interestAmount ? parseFloat(interestAmount) : 0,
+                    interestAmount: interest,
                     principalAmount: principalAmount ? parseFloat(principalAmount) : 0,
+                    date: date ? new Date(date) : new Date(), // Manual date or now
                     recordedBy: session?.user?.id!
                 }
             });
@@ -120,9 +123,10 @@ export async function POST(req: Request) {
                     data: { totalShares: { decrement: val } }
                 });
             } else if (type === "LOAN_DISBURSAL") {
+                // Increment Total Loans by Principal + Interest
                 await prismaTx.member.update({
                     where: { id: memberId },
-                    data: { totalLoans: { increment: val } }
+                    data: { totalLoans: { increment: val + interest } }
                 });
             } else if (type === "LOAN_REPAYMENT") {
                 const principal = principalAmount ? parseFloat(principalAmount) : val;
