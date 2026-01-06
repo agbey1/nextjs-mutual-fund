@@ -94,9 +94,11 @@ export default function MemberDetailPage() {
             const interest = Number((tx as any).interestAmount) || 0;
 
             switch (tx.type) {
+                case 'DEPOSIT':
                 case 'SAVINGS_DEPOSIT':
                     savings += principal;
                     break;
+                case 'WITHDRAWAL':
                 case 'SAVINGS_WITHDRAWAL':
                     savings -= principal;
                     break;
