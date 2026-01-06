@@ -92,7 +92,7 @@ export async function POST(req: Request) {
                     memberId,
                     type,
                     amount: val,
-                    reference,
+                    receiptNumber: reference,
                     description,
                     interestAmount: interest,
                     principalAmount: principalAmount ? parseFloat(principalAmount) : 0,
