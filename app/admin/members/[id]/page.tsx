@@ -111,6 +111,10 @@ export default function MemberDetailPage() {
                 case 'LOAN_DISBURSAL':
                     loans += principal + interest;
                     break;
+                case 'LOAN_FINE':
+                    // Fine increases the loan debt (like principal)
+                    loans += principal;
+                    break;
                 case 'LOAN_REPAYMENT':
                     loans -= principal;
                     break;
@@ -238,6 +242,7 @@ export default function MemberDetailPage() {
         if (type.includes('SAVINGS_DEPOSIT') || type.includes('SHARE_PURCHASE')) return 'bg-green-100 text-green-800';
         if (type.includes('SAVINGS_WITHDRAWAL') || type.includes('SHARE_WITHDRAWAL')) return 'bg-yellow-100 text-yellow-800';
         if (type.includes('LOAN_DISBURSAL')) return 'bg-red-100 text-red-800';
+        if (type.includes('LOAN_FINE')) return 'bg-orange-100 text-orange-800';
         if (type.includes('LOAN_REPAYMENT')) return 'bg-blue-100 text-blue-800';
         return 'bg-gray-100 text-gray-800';
     };

@@ -183,6 +183,7 @@ export default function TransactionPage() {
                         <option value="SHARE_WITHDRAWAL">Share Withdrawal</option>
                         <option value="LOAN_DISBURSAL">Loan Disbursal (Give Loan)</option>
                         <option value="LOAN_REPAYMENT">Loan Repayment (Pay Loan)</option>
+                        <option value="LOAN_FINE">Loan Fine (Penalty)</option>
                     </select>
                 </div>
 

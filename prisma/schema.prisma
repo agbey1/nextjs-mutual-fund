@@ -30,6 +30,7 @@ enum TransactionType {
   SHARE_WITHDRAWAL
   LOAN_DISBURSAL
   LOAN_REPAYMENT
+  LOAN_FINE
 }
 
 enum PaymentMethod {

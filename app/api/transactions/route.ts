@@ -128,11 +128,18 @@ export async function POST(req: Request) {
                     where: { id: memberId },
                     data: { totalLoans: { increment: val + interest } }
                 });
-            } else if (type === "LOAN_REPAYMENT") {
-                const principal = principalAmount ? parseFloat(principalAmount) : val;
+            } else if (type === "LOAN_FINE") {
+                // Increment Total Loans by Fine Amount
                 await prismaTx.member.update({
                     where: { id: memberId },
-                    data: { totalLoans: { decrement: principal } }
+                    data: { totalLoans: { increment: val } }
+                });
+            } else if (type === "LOAN_REPAYMENT") {
+                // Decrement Total Loans by the FULL repayment amount (Principal + Interest + Fine)
+                // Since totalLoans tracks Gross Debt, any payment reduces it.
+                await prismaTx.member.update({
+                    where: { id: memberId },
+                    data: { totalLoans: { decrement: val } }
                 });
             }
 
